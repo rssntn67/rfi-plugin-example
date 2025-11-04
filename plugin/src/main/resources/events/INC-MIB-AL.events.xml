@@ -1,0 +1,336 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.231.7.99.4</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>2301</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/traps/INC-MIB-AL/tiIncTrapCritical</uei>
+      <event-label>INC-MIB-AL defined trap event: tiIncTrapCritical</event-label>
+      <descr>Trap issued by the INC to an OS with a severity value of 'critical'.</descr>
+      <logmsg dest="logndisplay">tiIncTrapCritical trap received: tiAlarmDateTime=%parm[#1]%, tiAlarmReportingObject=%parm[#2]%, tiAlarmFaultyObject=%parm[#3]%, tiAlarmEventTypeId=%parm[#4]%, tiAlarmSeverity=%parm[#5]%, tiAlarmErrorID=%parm[#6]%, tiAlarmEndKey=%parm[#7]%, tiAlarmDescription=%parm[#8]%, tiAlarmSequenceNumber=%parm[#9]%, tiAlarmSourceName=%parm[#10]%, tiAlarmSymbNEname=%parm[#11]%, tiAlarmNotificationID=%parm[#12]%, tiAlarmTransferID=%parm[#13]%, tiAlarmRepairText=%parm[#14]%, tiAlarmLongText=%parm[#15]%</logmsg>
+      <severity>Critical</severity>
+      <varbindsdecode>
+         <parmid>parm[#4]</parmid>
+         <decode varbindvalue="2" varbinddecodedstring="communicationsAlarm"/>
+         <decode varbindvalue="3" varbinddecodedstring="environmentalAlarm"/>
+         <decode varbindvalue="4" varbinddecodedstring="equipmentAlarm"/>
+         <decode varbindvalue="10" varbinddecodedstring="processingErrorAlarm"/>
+         <decode varbindvalue="11" varbinddecodedstring="qualityOfServiceAlarm"/>
+         <decode varbindvalue="9999" varbinddecodedstring="indeterminate"/>
+      </varbindsdecode>
+      <varbindsdecode>
+         <parmid>parm[#5]</parmid>
+         <decode varbindvalue="0" varbinddecodedstring="indeterminate"/>
+         <decode varbindvalue="1" varbinddecodedstring="critical"/>
+         <decode varbindvalue="2" varbinddecodedstring="major"/>
+         <decode varbindvalue="3" varbinddecodedstring="minor"/>
+         <decode varbindvalue="4" varbinddecodedstring="warning"/>
+         <decode varbindvalue="5" varbinddecodedstring="cleared"/>
+      </varbindsdecode>
+      <varbindsdecode>
+         <parmid>parm[#7]</parmid>
+         <decode varbindvalue="0" varbinddecodedstring="false"/>
+         <decode varbindvalue="1" varbinddecodedstring="true"/>
+      </varbindsdecode>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.231.7.99.4</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>2302</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/traps/INC-MIB-AL/tiIncTrapMajor</uei>
+      <event-label>INC-MIB-AL defined trap event: tiIncTrapMajor</event-label>
+      <descr>Trap issued by the INC to an OS with a severity value of 'major'.</descr>
+      <logmsg dest="logndisplay">tiIncTrapMajor trap received: tiAlarmDateTime=%parm[#1]%, tiAlarmReportingObject=%parm[#2]%, tiAlarmFaultyObject=%parm[#3]%, tiAlarmEventTypeId=%parm[#4]%, tiAlarmSeverity=%parm[#5]%, tiAlarmErrorID=%parm[#6]%, tiAlarmEndKey=%parm[#7]%, tiAlarmDescription=%parm[#8]%, tiAlarmSequenceNumber=%parm[#9]%, tiAlarmSourceName=%parm[#10]%, tiAlarmSymbNEname=%parm[#11]%, tiAlarmNotificationID=%parm[#12]%, 	tiAlarmTransferID=%parm[#13]%, tiAlarmRepairText=%parm[#14]%, tiAlarmLongText=%parm[#15]%</logmsg>
+      <severity>Major</severity>
+      <varbindsdecode>
+         <parmid>parm[#4]</parmid>
+         <decode varbindvalue="2" varbinddecodedstring="communicationsAlarm"/>
+         <decode varbindvalue="3" varbinddecodedstring="environmentalAlarm"/>
+         <decode varbindvalue="4" varbinddecodedstring="equipmentAlarm"/>
+         <decode varbindvalue="10" varbinddecodedstring="processingErrorAlarm"/>
+         <decode varbindvalue="11" varbinddecodedstring="qualityOfServiceAlarm"/>
+         <decode varbindvalue="9999" varbinddecodedstring="indeterminate"/>
+      </varbindsdecode>
+      <varbindsdecode>
+         <parmid>parm[#5]</parmid>
+         <decode varbindvalue="0" varbinddecodedstring="indeterminate"/>
+         <decode varbindvalue="1" varbinddecodedstring="critical"/>
+         <decode varbindvalue="2" varbinddecodedstring="major"/>
+         <decode varbindvalue="3" varbinddecodedstring="minor"/>
+         <decode varbindvalue="4" varbinddecodedstring="warning"/>
+         <decode varbindvalue="5" varbinddecodedstring="cleared"/>
+      </varbindsdecode>
+      <varbindsdecode>
+         <parmid>parm[#7]</parmid>
+         <decode varbindvalue="0" varbinddecodedstring="false"/>
+         <decode varbindvalue="1" varbinddecodedstring="true"/>
+      </varbindsdecode>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.231.7.99.4</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>2303</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/traps/INC-MIB-AL/tiIncTrapMinor</uei>
+      <event-label>INC-MIB-AL defined trap event: tiIncTrapMinor</event-label>
+      <descr>Trap issued by the INC to an OS with a severity value of 'minor'.</descr>
+      <logmsg dest="logndisplay">tiIncTrapMinor trap received: tiAlarmDateTime=%parm[#1]%, tiAlarmReportingObject=%parm[#2]%, tiAlarmFaultyObject=%parm[#3]%, tiAlarmEventTypeId=%parm[#4]%, tiAlarmSeverity=%parm[#5]%, tiAlarmErrorID=%parm[#6]%, tiAlarmEndKey=%parm[#7]%, tiAlarmDescription=%parm[#8]%, tiAlarmSequenceNumber=%parm[#9]%, tiAlarmSourceName=%parm[#10]%, tiAlarmSymbNEname=%parm[#11]%, tiAlarmNotificationID=%parm[#12]%, tiAlarmTransferID=%parm[#13]%, tiAlarmRepairText=%parm[#14]%, tiAlarmLongText=%parm[#15]%</logmsg>
+      <severity>Minor</severity>
+      <varbindsdecode>
+         <parmid>parm[#4]</parmid>
+         <decode varbindvalue="2" varbinddecodedstring="communicationsAlarm"/>
+         <decode varbindvalue="3" varbinddecodedstring="environmentalAlarm"/>
+         <decode varbindvalue="4" varbinddecodedstring="equipmentAlarm"/>
+         <decode varbindvalue="10" varbinddecodedstring="processingErrorAlarm"/>
+         <decode varbindvalue="11" varbinddecodedstring="qualityOfServiceAlarm"/>
+         <decode varbindvalue="9999" varbinddecodedstring="indeterminate"/>
+      </varbindsdecode>
+      <varbindsdecode>
+         <parmid>parm[#5]</parmid>
+         <decode varbindvalue="0" varbinddecodedstring="indeterminate"/>
+         <decode varbindvalue="1" varbinddecodedstring="critical"/>
+         <decode varbindvalue="2" varbinddecodedstring="major"/>
+         <decode varbindvalue="3" varbinddecodedstring="minor"/>
+         <decode varbindvalue="4" varbinddecodedstring="warning"/>
+         <decode varbindvalue="5" varbinddecodedstring="cleared"/>
+      </varbindsdecode>
+      <varbindsdecode>
+         <parmid>parm[#7]</parmid>
+         <decode varbindvalue="0" varbinddecodedstring="false"/>
+         <decode varbindvalue="1" varbinddecodedstring="true"/>
+      </varbindsdecode>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.231.7.99.4</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>2304</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/traps/INC-MIB-AL/tiIncTrapWarning</uei>
+      <event-label>INC-MIB-AL defined trap event: tiIncTrapWarning</event-label>
+      <descr>Trap issued by the INC to an OS with a severity value of 'warning'.</descr>
+      <logmsg dest="logndisplay">tiIncTrapWarning trap received: tiAlarmDateTime=%parm[#1]%, tiAlarmReportingObject=%parm[#2]%, tiAlarmFaultyObject=%parm[#3]%, tiAlarmEventTypeId=%parm[#4]%, tiAlarmSeverity=%parm[#5]%, tiAlarmErrorID=%parm[#6]%, tiAlarmEndKey=%parm[#7]%, tiAlarmDescription=%parm[#8]%, tiAlarmSequenceNumber=%parm[#9]%, tiAlarmSourceName=%parm[#10]%, tiAlarmSymbNEname=%parm[#11]%, tiAlarmNotificationID=%parm[#12]%, tiAlarmTransferID=%parm[#13]%, tiAlarmRepairText=%parm[#14]%, tiAlarmLongText=%parm[#15]%</logmsg>
+      <severity>Warning</severity>
+      <varbindsdecode>
+         <parmid>parm[#4]</parmid>
+         <decode varbindvalue="2" varbinddecodedstring="communicationsAlarm"/>
+         <decode varbindvalue="3" varbinddecodedstring="environmentalAlarm"/>
+         <decode varbindvalue="4" varbinddecodedstring="equipmentAlarm"/>
+         <decode varbindvalue="10" varbinddecodedstring="processingErrorAlarm"/>
+         <decode varbindvalue="11" varbinddecodedstring="qualityOfServiceAlarm"/>
+         <decode varbindvalue="9999" varbinddecodedstring="indeterminate"/>
+      </varbindsdecode>
+      <varbindsdecode>
+         <parmid>parm[#5]</parmid>
+         <decode varbindvalue="0" varbinddecodedstring="indeterminate"/>
+         <decode varbindvalue="1" varbinddecodedstring="critical"/>
+         <decode varbindvalue="2" varbinddecodedstring="major"/>
+         <decode varbindvalue="3" varbinddecodedstring="minor"/>
+         <decode varbindvalue="4" varbinddecodedstring="warning"/>
+         <decode varbindvalue="5" varbinddecodedstring="cleared"/>
+      </varbindsdecode>
+      <varbindsdecode>
+         <parmid>parm[#7]</parmid>
+         <decode varbindvalue="0" varbinddecodedstring="false"/>
+         <decode varbindvalue="1" varbinddecodedstring="true"/>
+      </varbindsdecode>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.231.7.99.4</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>2305</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/traps/INC-MIB-AL/tiIncTrapNormal</uei>
+      <event-label>INC-MIB-AL defined trap event: tiIncTrapNormal</event-label>
+      <descr>Trap issued by the INC to an OS with a severity value of 'indeterminate'.</descr>
+      <logmsg dest="logndisplay">tiIncTrapNormal trap received: tiAlarmDateTime=%parm[#1]%, tiAlarmReportingObject=%parm[#2]%, tiAlarmFaultyObject=%parm[#3]%, tiAlarmEventTypeId=%parm[#4]%, tiAlarmSeverity=%parm[#5]%, tiAlarmErrorID=%parm[#6]%, tiAlarmEndKey=%parm[#7]%, tiAlarmDescription=%parm[#8]%, tiAlarmSequenceNumber=%parm[#9]%, tiAlarmSourceName=%parm[#10]%, tiAlarmSymbNEname=%parm[#11]%, tiAlarmNotificationID=%parm[#12]%, tiAlarmTransferID=%parm[#13]%, tiAlarmRepairText=%parm[#14]%, tiAlarmLongText=%parm[#15]%</logmsg>
+      <severity>Normal</severity>
+      <varbindsdecode>
+         <parmid>parm[#4]</parmid>
+         <decode varbindvalue="2" varbinddecodedstring="communicationsAlarm"/>
+         <decode varbindvalue="3" varbinddecodedstring="environmentalAlarm"/>
+         <decode varbindvalue="4" varbinddecodedstring="equipmentAlarm"/>
+         <decode varbindvalue="10" varbinddecodedstring="processingErrorAlarm"/>
+         <decode varbindvalue="11" varbinddecodedstring="qualityOfServiceAlarm"/>
+         <decode varbindvalue="9999" varbinddecodedstring="indeterminate"/>
+      </varbindsdecode>
+      <varbindsdecode>
+         <parmid>parm[#5]</parmid>
+         <decode varbindvalue="0" varbinddecodedstring="indeterminate"/>
+         <decode varbindvalue="1" varbinddecodedstring="critical"/>
+         <decode varbindvalue="2" varbinddecodedstring="major"/>
+         <decode varbindvalue="3" varbinddecodedstring="minor"/>
+         <decode varbindvalue="4" varbinddecodedstring="warning"/>
+         <decode varbindvalue="5" varbinddecodedstring="cleared"/>
+      </varbindsdecode>
+      <varbindsdecode>
+         <parmid>parm[#7]</parmid>
+         <decode varbindvalue="0" varbinddecodedstring="false"/>
+         <decode varbindvalue="1" varbinddecodedstring="true"/>
+      </varbindsdecode>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.231.7.99.4</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>2306</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/traps/INC-MIB-AL/tiIncTrapCleared</uei>
+      <event-label>INC-MIB-AL defined trap event: tiIncTrapCleared</event-label>
+      <descr>Trap issued by the INC to an OS with a severity value of 'cleared'.</descr>
+      <logmsg dest="logndisplay">tiIncTrapCleared trap received: tiAlarmDateTime=%parm[#1]%, tiAlarmReportingObject=%parm[#2]%, tiAlarmFaultyObject=%parm[#3]%, tiAlarmEventTypeId=%parm[#4]%, tiAlarmSeverity=%parm[#5]%, tiAlarmErrorID=%parm[#6]%, tiAlarmEndKey=%parm[#7]%, tiAlarmDescription=%parm[#8]%, tiAlarmSequenceNumber=%parm[#9]%, tiAlarmSourceName=%parm[#10]%, tiAlarmSymbNEname=%parm[#11]%, tiAlarmNotificationID=%parm[#12]%, tiAlarmTransferID=%parm[#13]%, tiAlarmRepairText=%parm[#14]%, tiAlarmLongText=%parm[#15]%</logmsg>
+      <severity>Normal</severity>
+      <varbindsdecode>
+         <parmid>parm[#4]</parmid>
+         <decode varbindvalue="2" varbinddecodedstring="communicationsAlarm"/>
+         <decode varbindvalue="3" varbinddecodedstring="environmentalAlarm"/>
+         <decode varbindvalue="4" varbinddecodedstring="equipmentAlarm"/>
+         <decode varbindvalue="10" varbinddecodedstring="processingErrorAlarm"/>
+         <decode varbindvalue="11" varbinddecodedstring="qualityOfServiceAlarm"/>
+         <decode varbindvalue="9999" varbinddecodedstring="indeterminate"/>
+      </varbindsdecode>
+      <varbindsdecode>
+         <parmid>parm[#5]</parmid>
+         <decode varbindvalue="0" varbinddecodedstring="indeterminate"/>
+         <decode varbindvalue="1" varbinddecodedstring="critical"/>
+         <decode varbindvalue="2" varbinddecodedstring="major"/>
+         <decode varbindvalue="3" varbinddecodedstring="minor"/>
+         <decode varbindvalue="4" varbinddecodedstring="warning"/>
+         <decode varbindvalue="5" varbinddecodedstring="cleared"/>
+      </varbindsdecode>
+      <varbindsdecode>
+         <parmid>parm[#7]</parmid>
+         <decode varbindvalue="0" varbinddecodedstring="false"/>
+         <decode varbindvalue="1" varbinddecodedstring="true"/>
+      </varbindsdecode>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.231.7.99.4</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>2310</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/traps/INC-MIB-AL/tiIncPeriodicalSumRep</uei>
+      <event-label>INC-MIB-AL defined trap event: tiIncPeriodicalSumRep</event-label>
+      <descr>Periodical Alarm Summary Report for a single host.</descr>
+      <logmsg dest="logndisplay">tiIncPeriodicalSumRep trap received: tiAlarmSourceName=%parm[#1]%, tiAlarmSymbNEname=%parm[#2]%, tiIsConnectionReliable=%parm[#3]%, tiMaxSeverity=%parm[#4]%, tiNumCriticalAlarms=%parm[#5]%, tiNumMajorAlarms=%parm[#6]%, tiNumMinorAlarms=%parm[#7]%, tiNumWarnings=%parm[#8]%, tiNumNormalEvents=%parm[#9]%, tiNumUnknownEvents=%parm[#10]%</logmsg>
+      <severity>Normal</severity>
+      <varbindsdecode>
+         <parmid>parm[#3]</parmid>
+         <decode varbindvalue="0" varbinddecodedstring="false"/>
+         <decode varbindvalue="1" varbinddecodedstring="true"/>
+      </varbindsdecode>
+      <varbindsdecode>
+         <parmid>parm[#4]</parmid>
+         <decode varbindvalue="0" varbinddecodedstring="indeterminate"/>
+         <decode varbindvalue="1" varbinddecodedstring="critical"/>
+         <decode varbindvalue="2" varbinddecodedstring="major"/>
+         <decode varbindvalue="3" varbinddecodedstring="minor"/>
+         <decode varbindvalue="4" varbinddecodedstring="warning"/>
+         <decode varbindvalue="5" varbinddecodedstring="cleared"/>
+      </varbindsdecode>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.231.7.99.4</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>2311</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/traps/INC-MIB-AL/tiIncSpontaneousSumRep</uei>
+      <event-label>INC-MIB-AL defined trap event: tiIncSpontaneousSumRep</event-label>
+      <descr>Spontaneous Alarm Summary Report for a single host.</descr>
+      <logmsg dest="logndisplay">tiIncSpontaneousSumRep trap received: tiAlarmSourceName=%parm[#1]%, tiAlarmSymbNEname=%parm[#2]%, tiIsConnectionReliable=%parm[#3]%, tiMaxSeverity=%parm[#4]%, tiNumCriticalAlarms=%parm[#5]%, tiNumMajorAlarms=%parm[#6]%, tiNumMinorAlarms=%parm[#7]%, tiNumWarnings=%parm[#8]%, tiNumNormalEvents=%parm[#9]%, tiNumUnknownEvents=%parm[#10]%</logmsg>
+      <severity>Normal</severity>
+      <varbindsdecode>
+         <parmid>parm[#3]</parmid>
+         <decode varbindvalue="0" varbinddecodedstring="false"/>
+         <decode varbindvalue="1" varbinddecodedstring="true"/>
+      </varbindsdecode>
+      <varbindsdecode>
+         <parmid>parm[#4]</parmid>
+         <decode varbindvalue="0" varbinddecodedstring="indeterminate"/>
+         <decode varbindvalue="1" varbinddecodedstring="critical"/>
+         <decode varbindvalue="2" varbinddecodedstring="major"/>
+         <decode varbindvalue="3" varbinddecodedstring="minor"/>
+         <decode varbindvalue="4" varbinddecodedstring="warning"/>
+         <decode varbindvalue="5" varbinddecodedstring="cleared"/>
+      </varbindsdecode>
+   </event>
+</events>

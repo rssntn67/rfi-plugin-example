@@ -1,0 +1,53 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+   <event>
+      <uei>uei.opennms.org/translator/INC-MIB-AL/tiIncTrapCritical</uei>
+      <event-label>INC-MIB-AL defined trap event: tiIncTrapCritical</event-label>
+      <descr>Trap issued by the INC to an OS with a severity value of 'critical'.</descr>
+      <logmsg dest="logndisplay">%parm[#8]%</logmsg>
+      <operinstruct>%parm[#10]%</operinstruct>
+      <severity>Critical</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/INC-MIB-AL/tiIncTrap:%parm[#2]%:%parm[#12]%" alarm-type="1" auto-clean="true"/>	
+   </event>
+   <event>
+      <uei>uei.opennms.org/translator/INC-MIB-AL/tiIncTrapMajor</uei>
+      <event-label>INC-MIB-AL defined trap event: tiIncTrapMajor</event-label>
+      <descr>Trap issued by the INC to an OS with a severity value of 'major'.</descr>
+      <logmsg dest="logndisplay">%parm[#8]%</logmsg>
+      <operinstruct>%parm[#10]%</operinstruct>
+      <severity>Major</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/INC-MIB-AL/tiIncTrap:%parm[#2]%:%parm[#12]%" alarm-type="1" auto-clean="true"/>	
+   </event>
+   <event>
+      <uei>uei.opennms.org/translator/INC-MIB-AL/tiIncTrapMinor</uei>
+      <event-label>INC-MIB-AL defined trap event: tiIncTrapMinor</event-label>
+      <descr>Trap issued by the INC to an OS with a severity value of 'minor'.</descr>
+      <logmsg dest="logndisplay">%parm[#8]%</logmsg>
+      <operinstruct>%parm[#10]%</operinstruct>
+      <severity>Minor</severity>
+   </event>
+   <event>
+      <uei>uei.opennms.org/translator/INC-MIB-AL/tiIncTrapWarning</uei>
+      <event-label>INC-MIB-AL defined trap event: tiIncTrapWarning</event-label>
+      <descr>Trap issued by the INC to an OS with a severity value of 'warning'.</descr>
+      <logmsg dest="logndisplay">%parm[#8]%</logmsg>
+      <operinstruct>%parm[#10]%</operinstruct>
+      <severity>Warning</severity>
+   </event>
+   <event>
+      <uei>uei.opennms.org/translator/INC-MIB-AL/tiIncTrapNormal</uei>
+      <event-label>INC-MIB-AL defined trap event: tiIncTrapNormal</event-label>
+      <descr>Trap issued by the INC to an OS with a severity value of 'indeterminate'.</descr>
+      <logmsg dest="logndisplay">%parm[#8]%</logmsg>
+      <operinstruct>%parm[#10]%</operinstruct>
+      <severity>Normal</severity>
+   </event>
+   <event>
+      <uei>uei.opennms.org/translator/INC-MIB-AL/tiIncTrapCleared</uei>
+      <event-label>INC-MIB-AL defined trap event: tiIncTrapCleared</event-label>
+      <descr>Trap issued by the INC to an OS with a severity value of 'cleared'.</descr>
+      <logmsg dest="logndisplay">%parm[#8]%</logmsg>
+      <operinstruct>%parm[#10]%</operinstruct>
+      <severity>Normal</severity>
+      <alarm-data reduction-key="%uei%:%parm[#2]%:%parm[#12]%" clear-key="uei.opennms.org/translator/INC-MIB-AL/tiIncTrap:%parm[#2]%:%parm[#12]%" alarm-type="2" auto-clean="true"/>	
+   </event>
+</events>

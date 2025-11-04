@@ -9,7 +9,9 @@ public class EventConfExtension implements org.opennms.integration.api.v1.config
 
     private final ClasspathEventDefinitionLoader classpathEventDefinitionLoader = new ClasspathEventDefinitionLoader(
             EventConfExtension.class,
-            "plugin.ext.events.xml"
+            "plugin.ext.events.xml",
+            "INC-MIB-AL.events.xml",
+            "INC-MIB-AL.translator.events.xml"
     );
 
     @Override
