@@ -3,6 +3,7 @@ package it.xeniaprogetti.rfi.plugin.example;
 import java.util.List;
 import java.util.Objects;
 
+import it.xeniaprogetti.rfi.plugin.example.clients.ApiClient;
 import org.opennms.integration.api.v1.alarms.AlarmLifecycleListener;
 import org.opennms.integration.api.v1.events.EventForwarder;
 import org.opennms.integration.api.v1.model.Alarm;

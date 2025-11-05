@@ -19,10 +19,22 @@
     <reference id="eventForwarder" interface="org.opennms.integration.api.v1.events.EventForwarder" availability="optional"/>
 
     <!-- Build our API client -->
-    <bean id="apiClient" class="it.xeniaprogetti.rfi.plugin.example.ApiClient">
+    <bean id="apiClient" class="it.xeniaprogetti.rfi.plugin.example.clients.ApiClient">
         <argument value="${url}"/>
         <argument value="${apiKey}"/>
     </bean>
+
+    <bean id="connectionManager" class="it.xeniaprogetti.rfi.plugin.example.connection.ConnectionManager">
+        <argument>
+            <reference interface="org.opennms.integration.api.v1.runtime.RuntimeInfo" availability="optional"/>
+        </argument>
+        <argument>
+            <reference interface="org.opennms.integration.api.v1.scv.SecureCredentialsVault" availability="optional"/>
+        </argument>
+    </bean>
+    <service ref="connectionManager" interface="it.xeniaprogetti.rfi.plugin.example.connection.ConnectionManager"/>
+
+    <bean id="snmpClient" class="it.xeniaprogetti.rfi.plugin.example.clients.SnmpClient"/>
 
     <!-- Build our forwarder bean -->
     <bean id="alarmForwarder" class="it.xeniaprogetti.rfi.plugin.example.AlarmForwarder">
@@ -44,8 +56,8 @@
 
     <!-- Build and expose the JAX-RS annotated webhook handler.
          This will automatically mount the endpoint over the REST API. -->
-    <bean id="webhookHandlerImpl" class="it.xeniaprogetti.rfi.plugin.example.WebhookHandlerImpl" />
-    <service interface="it.xeniaprogetti.rfi.plugin.example.WebhookHandler" ref="webhookHandlerImpl">
+    <bean id="webhookHandlerImpl" class="it.xeniaprogetti.rfi.plugin.example.webhook.WebhookHandlerImpl" />
+    <service interface="it.xeniaprogetti.rfi.plugin.example.webhook.WebhookHandler" ref="webhookHandlerImpl">
         <service-properties>
             <entry key="application-path" value="/rest" />
         </service-properties>
@@ -53,7 +65,8 @@
 
     <!-- Expose our custom event definitions bundled in the .jar -->
     <service interface="org.opennms.integration.api.v1.config.events.EventConfExtension">
-        <bean class="it.xeniaprogetti.rfi.plugin.example.EventConfExtension"/>
+        <bean class="it.xeniaprogetti.rfi.plugin.example.events.EventConfExtension"/>
     </service>
+
 
 </blueprint>

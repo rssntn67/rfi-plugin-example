@@ -1,4 +1,4 @@
-package it.xeniaprogetti.rfi.plugin.example;
+package it.xeniaprogetti.rfi.plugin.example.events;
 
 import java.util.List;
 

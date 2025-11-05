@@ -12,6 +12,7 @@ import static org.mockito.Mockito.mock;
 
 import java.util.concurrent.TimeUnit;
 
+import it.xeniaprogetti.rfi.plugin.example.clients.ApiClient;
 import org.junit.Rule;
 import org.junit.Test;
 import org.opennms.integration.api.v1.events.EventForwarder;

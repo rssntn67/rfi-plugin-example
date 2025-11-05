@@ -1,4 +1,4 @@
-package it.xeniaprogetti.rfi.plugin.example;
+package it.xeniaprogetti.rfi.plugin.example.clients;
 
 import java.io.IOException;
 import java.util.Objects;

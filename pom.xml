@@ -27,6 +27,8 @@
         <osgi.compendium.version>5.0.0</osgi.compendium.version>
         <osgi.enterprise.version>5.0.0</osgi.enterprise.version>
         <slf4j-api.version>1.7.30</slf4j-api.version>
+        <snmp4j.bundle.version>3.9.2_1</snmp4j.bundle.version>
+        <snmp4j.version>3.9.2</snmp4j.version>
     </properties>
 
     <version>0.1.0-SNAPSHOT</version>

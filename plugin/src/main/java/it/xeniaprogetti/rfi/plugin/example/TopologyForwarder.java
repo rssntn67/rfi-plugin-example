@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
+import it.xeniaprogetti.rfi.plugin.example.clients.ApiClient;
 import org.opennms.integration.api.v1.dao.EdgeDao;
 import org.opennms.integration.api.v1.model.Node;
 import org.opennms.integration.api.v1.model.TopologyEdge;

@@ -1,4 +1,4 @@
-package it.xeniaprogetti.rfi.plugin.example;
+package it.xeniaprogetti.rfi.plugin.example.webhook;
 
 import javax.ws.rs.core.Response;
 
