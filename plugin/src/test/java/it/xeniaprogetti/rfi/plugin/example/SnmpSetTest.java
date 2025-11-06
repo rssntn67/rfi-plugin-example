@@ -2,6 +2,7 @@ package it.xeniaprogetti.rfi.plugin.example;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import it.xeniaprogetti.rfi.plugin.example.clients.SnmpCredentials;
 import it.xeniaprogetti.rfi.plugin.example.model.Alert;
 import it.xeniaprogetti.rfi.plugin.example.snmp.AdvancedSnmpSet;
 import org.json.JSONException;
@@ -26,7 +27,12 @@ public class SnmpSetTest {
         AdvancedSnmpSet snmpSet = null;
 
         try {
-            snmpSet = new AdvancedSnmpSet("192.168.1.1", "private");
+
+            snmpSet = new AdvancedSnmpSet(SnmpCredentials.builder()
+                    .withAddress("udp:192.168.1.1/161")
+                    .withCommunity("private")
+                    .withVersion(1)
+                    .build() );
 
             // Example 1: Set multiple values at once
             Map<String, Variable> multipleValues = new HashMap<>();

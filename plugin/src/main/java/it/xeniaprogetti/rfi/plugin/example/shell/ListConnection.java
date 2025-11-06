@@ -10,7 +10,7 @@ import org.apache.karaf.shell.api.console.Session;
 import org.apache.karaf.shell.support.table.Col;
 import org.apache.karaf.shell.support.table.ShellTable;
 
-@Command(scope = "opennms-rfi-plugin-example", name = "connection-delete", description = "Delete a connection", detailedDescription = "Delete credential for SNMP connection")
+@Command(scope = "opennms-rfi-plugin-example", name = "connection-list", description = "List all connections", detailedDescription = "Delete credential for SNMP connection")
 @Service
 public class ListConnection implements Action {
 

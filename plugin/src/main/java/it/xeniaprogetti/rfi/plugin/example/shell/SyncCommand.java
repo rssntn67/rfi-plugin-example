@@ -3,6 +3,7 @@ package it.xeniaprogetti.rfi.plugin.example.shell;
 import com.codahale.metrics.ConsoleReporter;
 import com.codahale.metrics.MetricRegistry;
 import it.xeniaprogetti.rfi.plugin.example.AlarmForwarder;
+import it.xeniaprogetti.rfi.plugin.example.SyncService;
 import it.xeniaprogetti.rfi.plugin.example.clients.SnmpClient;
 import it.xeniaprogetti.rfi.plugin.example.connection.Connection;
 import it.xeniaprogetti.rfi.plugin.example.connection.ConnectionManager;
@@ -28,10 +29,7 @@ import java.util.concurrent.TimeUnit;
 public class SyncCommand implements Action {
 
     @Reference
-    ConnectionManager connectionManager;
-
-    @Reference
-    SnmpClient snmpClient;
+    SyncService syncService;
 
     @Argument(name = "alias", description = "Alias of the snmp connection credential", required = true)
     public String alias = null;
@@ -39,20 +37,9 @@ public class SyncCommand implements Action {
     @Override
     public Object execute() throws IOException {
 
-        Optional<Connection> connection = connectionManager.getConnection(alias);
+        syncService.sync(alias);
 
-        if(connection.isEmpty()){
-            System.err.println("Connection not found for alias: " + alias);
-        }
-
-        AdvancedSnmpSet setterClient = snmpClient.getSnmpClient(connection.get());
-
-        Map<String, Variable> multipleValues = new HashMap<>();
-        multipleValues.put("1.3.6.1.2.1.1.4.0", new OctetString("admin@company.com"));
-        multipleValues.put("1.3.6.1.2.1.1.6.0", new OctetString("Server Room"));
-        multipleValues.put("1.3.6.1.2.1.1.7.0", new Integer32(72));
-
-        setterClient.setMultiple(multipleValues);
+        System.out.println("Sync command successfully sent");
 
         return null;
     }

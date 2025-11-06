@@ -35,6 +35,13 @@
     <service ref="connectionManager" interface="it.xeniaprogetti.rfi.plugin.example.connection.ConnectionManager"/>
 
     <bean id="snmpClient" class="it.xeniaprogetti.rfi.plugin.example.clients.SnmpClient"/>
+    <service ref="snmpClient" interface="it.xeniaprogetti.rfi.plugin.example.clients.SnmpClient"/>
+
+    <bean id="syncService" class="it.xeniaprogetti.rfi.plugin.example.SyncService">
+        <argument ref="snmpClient"/>
+        <argument ref="connectionManager"/>
+    </bean>
+    <service ref="syncService" interface="it.xeniaprogetti.rfi.plugin.example.SyncService"/>
 
     <!-- Build our forwarder bean -->
     <bean id="alarmForwarder" class="it.xeniaprogetti.rfi.plugin.example.AlarmForwarder">
@@ -56,7 +63,10 @@
 
     <!-- Build and expose the JAX-RS annotated webhook handler.
          This will automatically mount the endpoint over the REST API. -->
-    <bean id="webhookHandlerImpl" class="it.xeniaprogetti.rfi.plugin.example.webhook.WebhookHandlerImpl" />
+    <bean id="webhookHandlerImpl" class="it.xeniaprogetti.rfi.plugin.example.webhook.WebhookHandlerImpl" >
+        <argument ref="syncService"/>
+        <argument ref="connectionManager"/>
+    </bean>
     <service interface="it.xeniaprogetti.rfi.plugin.example.webhook.WebhookHandler" ref="webhookHandlerImpl">
         <service-properties>
             <entry key="application-path" value="/rest" />

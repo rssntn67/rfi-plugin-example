@@ -8,7 +8,8 @@ import org.apache.karaf.shell.api.action.lifecycle.Reference;
 import org.apache.karaf.shell.api.action.lifecycle.Service;
 import org.snmp4j.mp.SnmpConstants;
 
-@Command(scope = "opennms-rfi-plugin-example", name = "connection-add", description = "Add a connection", detailedDescription = "Add credential for SNMP connection")
+@Command(scope = "opennms-rfi-plugin-example", name = "connection-add", description = "Add a connection",
+        detailedDescription = "Add credential for SNMP connection")
 @Service
 public class AddConnection implements Action {
 
