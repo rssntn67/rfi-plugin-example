@@ -14,12 +14,11 @@
     </cm:property-placeholder>
 
     <!-- Pull in service implementations from the OSGi registry -->
-    <reference id="nodeDao" interface="org.opennms.integration.api.v1.dao.NodeDao" availability="optional"/>
-    <reference id="alarmDao" interface="org.opennms.integration.api.v1.dao.AlarmDao" availability="optional"/>
-    <reference id="edgeDao" interface="org.opennms.integration.api.v1.dao.EdgeDao" availability="optional"/>
-    <reference id="eventForwarder" interface="org.opennms.integration.api.v1.events.EventForwarder" availability="optional"/>
-    <reference id="eventSubscriptionService" interface="org.opennms.integration.api.v1.events.EventSubscriptionService" availability="optional"/>
-
+    <reference id="nodeDao" interface="org.opennms.integration.api.v1.dao.NodeDao"/>
+    <reference id="alarmDao" interface="org.opennms.integration.api.v1.dao.AlarmDao"/>
+    <reference id="edgeDao" interface="org.opennms.integration.api.v1.dao.EdgeDao"/>
+    <reference id="eventForwarder" interface="org.opennms.integration.api.v1.events.EventForwarder"/>
+    <reference id="eventSubscriptionService" interface="org.opennms.integration.api.v1.events.EventSubscriptionService"/>
 
     <!-- Build our API client -->
     <bean id="apiClient" class="it.xeniaprogetti.rfi.plugin.example.clients.ApiClient">
@@ -81,13 +80,12 @@
         <bean class="it.xeniaprogetti.rfi.plugin.example.events.EventConfExtension"/>
     </service>
 
-    <service interface="org.opennms.integration.api.v1.events.EventListener" >
-        <bean class="it.xeniaprogetti.rfi.plugin.example.events.AComEventIngestor" init-method="start">
-            <argument ref="eventForwarder"/>
-            <argument ref="nodeDao"/>
-            <argument ref="alarmDao"/>
-            <argument ref="eventSubscriptionService"/>
-        </bean>
-    </service>
+    <bean id="aComEventIngestor" class="it.xeniaprogetti.rfi.plugin.example.events.AComEventIngestor"
+          init-method="start" destroy-method="destroy">
+        <argument ref="eventForwarder"/>
+        <argument ref="nodeDao"/>
+        <argument ref="alarmDao"/>
+        <argument ref="eventSubscriptionService"/>
+    </bean>
 
 </blueprint>

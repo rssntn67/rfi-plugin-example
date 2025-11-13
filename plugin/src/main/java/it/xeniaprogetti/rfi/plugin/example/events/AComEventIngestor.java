@@ -5,106 +5,137 @@ import org.opennms.integration.api.v1.dao.NodeDao;
 import org.opennms.integration.api.v1.events.EventForwarder;
 import org.opennms.integration.api.v1.events.EventListener;
 import org.opennms.integration.api.v1.events.EventSubscriptionService;
+import org.opennms.integration.api.v1.model.EventParameter;
 import org.opennms.integration.api.v1.model.InMemoryEvent;
 import org.opennms.integration.api.v1.model.Node;
 import org.opennms.integration.api.v1.model.immutables.ImmutableInMemoryEvent;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class AComEventIngestor implements EventListener {
 
-    private static final Logger LOG = LoggerFactory.getLogger(AComEventIngestor.class);
+    private static final Logger log = LoggerFactory.getLogger(AComEventIngestor.class);
 
-	private static String UEI_ACOM_MATCH = "uei.opennms.org/traps/INC-MIB-AL";
-	private static String NODE_LABEL_ACOM_PARAMETER_MATCH = ".1.3.6.1.4.1.231.7.99.4.2.1.1.11";
+    private static final String UEI_ACOM_PREFIX = "uei.opennms.org/traps/INC-MIB-AL";
+    private static final String NODE_LABEL_ACOM_PARAMETER_MATCH = ".1.3.6.1.4.1.231.7.99.4.2.1.1.11";
+    private static final String TIME_ACOM_PARAMETER = ".1.3.6.1.4.1.231.7.99.4.2.1.1.1"; //tiAlarmDateTime
+    private static final DateTimeFormatter TRAP_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyyMMddHHmmssZ");
+    private static final List<String> INTERESTING_ACOM_UEIS = Arrays.asList(
+            UEI_ACOM_PREFIX + "/tiIncTrapCleared",
+            UEI_ACOM_PREFIX + "/tiIncTrapNormal",
+            UEI_ACOM_PREFIX + "/tiIncTrapWarning",
+            UEI_ACOM_PREFIX + "/tiIncTrapMinor",
+            UEI_ACOM_PREFIX + "/tiIncTrapMajor",
+            UEI_ACOM_PREFIX + "/tiIncTrapCritical"
+    );
 
-	private final EventForwarder eventForwarder;
-	private final NodeDao nodeDao;
-	private final AlarmDao alarmDao;
+    private final EventForwarder eventForwarder;
+    private final NodeDao nodeDao;
+    private final AlarmDao alarmDao;
     private final EventSubscriptionService eventSubscriptionService;
 
-	private boolean syncAct = false;
-	private Date startSyncDate;
+    private boolean syncAct = false;
+    private Date startSyncDate;
 
     public AComEventIngestor(EventForwarder eventForwarder,
                              NodeDao nodeDao,
                              AlarmDao alarmDao,
                              EventSubscriptionService eventSubscriptionService) {
-        // costruttore vuoto necessario
         this.eventForwarder = eventForwarder;
         this.nodeDao = nodeDao;
         this.alarmDao = alarmDao;
         this.eventSubscriptionService = eventSubscriptionService;
-
     }
 
     public void start(){
-        eventSubscriptionService.addEventListener(this);
+        eventSubscriptionService.addEventListener(this, INTERESTING_ACOM_UEIS);
+        log.info("AComEventIngestor registered on UEIS: {}", INTERESTING_ACOM_UEIS);
     }
 
-	@Override
-	public String getName() {
+    public void destroy() {
+        try {
+            eventSubscriptionService.removeEventListener(this, INTERESTING_ACOM_UEIS);
+            log.info("AComEventIngestor deregistered");
+        } catch (Exception e) {
+            log.warn("Error while deregistering listener", e);
+        }
+    }
 
-		return "acomEventIngestor";
-	}
+    @Override
+    public String getName() {
+        return "acomEventIngestor";
+    }
 
-	@Override
-	public int getNumThreads() {		
-		return 1;
-	}
+    @Override
+    public int getNumThreads() {
+        return 1;
+    }
 
-	@Override
-	public void onEvent(InMemoryEvent e) {
+    @Override
+    public void onEvent(InMemoryEvent e) {
 
-
-
-		if(!e.getUei().startsWith(UEI_ACOM_MATCH)) {
-			return;
-		}
-
-        LOG.info("arrive new event: {}", e);
+        log.info("Arrived new event filtered: {}", e);
 
         ImmutableInMemoryEvent translate = translate(e);
 
-        LOG.info("send event translated: {} ", translate);
-        eventForwarder.sendAsync( translate );
-			
-	}
+        log.info("send event translated: {} ", translate);
+        eventForwarder.sendAsync(translate);
+    }
 
+    private ImmutableInMemoryEvent translate(InMemoryEvent e) {
 
-	private ImmutableInMemoryEvent translate(InMemoryEvent e) {
+        String nodeLabel = e.getParametersByName(NODE_LABEL_ACOM_PARAMETER_MATCH).stream()
+                .findFirst().map(EventParameter::getValue).orElse(null);
 
-        LOG.info("translate event : {}", e);
-		String nodeLabel = e.getParametersByName(NODE_LABEL_ACOM_PARAMETER_MATCH).get(0).getValue();
-		Node nodeByLabel = nodeDao.getNodeByLabel(nodeLabel);
-		
-		String uei = e.getUei().replace(UEI_ACOM_MATCH, UEI_ACOM_MATCH + "/translator");
-		
-		return ImmutableInMemoryEvent.newBuilderFrom(e)
-				.setNodeId(nodeByLabel == null ? 1 : nodeByLabel.getId())
-				.setUei(uei)
-				.build();
-	} 
-	
-	public synchronized void startSyncActive(Date startSyncDate) {	
-		syncAct = true;
-		this.startSyncDate = startSyncDate;
-		
-		//clean all alarms
-		alarmDao.getAlarms().stream()
-				.filter(a -> { return a.getReductionKey().startsWith(UEI_ACOM_MATCH) && a.getLastEventTime().before(startSyncDate); })
-				.forEach(a -> alarmDao.clear(a.getId()));
-		
-		
-	}
-	
-	public synchronized void endSync() {
-		syncAct = false;
-	}
+        Node node = nodeLabel == null ? null : nodeDao.getNodeByLabel(nodeLabel);
 
+        String uei = e.getUei().replace("/traps/", "/translator/");
+
+        ImmutableInMemoryEvent.Builder builder = ImmutableInMemoryEvent.newBuilderFrom(e)
+                .setNodeId(node == null ? 1 : node.getId())
+                .setUei(uei);
+
+        String timeEvent = e.getParametersByName(TIME_ACOM_PARAMETER).stream()
+                .findFirst().map(EventParameter::getValue).orElse(null);
+
+        if(timeEvent!=null){
+
+            try{
+                Instant trapInstant = ZonedDateTime.parse(timeEvent, TRAP_TIME_FORMATTER).toInstant();
+                Date trapDate = Date.from(trapInstant);
+                builder.setTime(trapDate);
+
+            } catch (DateTimeParseException ex) {
+                log.error("Unable to parse event time '{}', keeping original event time", timeEvent, ex);
+            }
+
+        }else{
+            log.info("The event time into trap is null.");
+        }
+
+        return builder.build();
+    }
+
+    public synchronized void startSyncActive(Date startSyncDate) {
+        syncAct = true;
+        this.startSyncDate = startSyncDate;
+
+        //clean all alarms
+        alarmDao.getAlarms().stream()
+                .filter(a -> { return a.getReductionKey().startsWith(UEI_ACOM_PREFIX) && a.getLastEventTime().before(startSyncDate); })
+                .forEach(a -> alarmDao.clear(a.getId()));
+    }
+
+    public synchronized void endSync() {
+        syncAct = false;
+    }
 
 }
