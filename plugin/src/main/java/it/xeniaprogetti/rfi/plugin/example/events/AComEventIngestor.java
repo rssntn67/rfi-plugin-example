@@ -26,8 +26,8 @@ public class AComEventIngestor implements EventListener {
 
     private static final String UEI_ACOM_PREFIX = "uei.opennms.org/traps/INC-MIB-AL";
     private static final String NODE_LABEL_ACOM_PARAMETER_MATCH = ".1.3.6.1.4.1.231.7.99.4.2.1.1.11";
-    private static final String TIME_ACOM_PARAMETER = ".1.3.6.1.4.1.231.7.99.4.2.1.1.1"; //tiAlarmDateTime
-    private static final DateTimeFormatter TRAP_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyyMMddHHmmssZ");
+    protected static final String TIME_ACOM_PARAMETER = ".1.3.6.1.4.1.231.7.99.4.2.1.1.1"; //tiAlarmDateTime
+    protected static final DateTimeFormatter TRAP_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyyMMddHHmmssZ");
     private static final List<String> INTERESTING_ACOM_UEIS = Arrays.asList(
             UEI_ACOM_PREFIX + "/tiIncTrapCleared",
             UEI_ACOM_PREFIX + "/tiIncTrapNormal",
@@ -90,7 +90,7 @@ public class AComEventIngestor implements EventListener {
         eventForwarder.sendAsync(translate);
     }
 
-    private ImmutableInMemoryEvent translate(InMemoryEvent e) {
+    protected ImmutableInMemoryEvent translate(InMemoryEvent e) {
 
         String nodeLabel = e.getParametersByName(NODE_LABEL_ACOM_PARAMETER_MATCH).stream()
                 .findFirst().map(EventParameter::getValue).orElse(null);
@@ -101,7 +101,8 @@ public class AComEventIngestor implements EventListener {
 
         ImmutableInMemoryEvent.Builder builder = ImmutableInMemoryEvent.newBuilderFrom(e)
                 .setNodeId(node == null ? 1 : node.getId())
-                .setUei(uei);
+                .setUei(uei)
+                .setSource("rfi-plugin-example");
 
         String timeEvent = e.getParametersByName(TIME_ACOM_PARAMETER).stream()
                 .findFirst().map(EventParameter::getValue).orElse(null);
