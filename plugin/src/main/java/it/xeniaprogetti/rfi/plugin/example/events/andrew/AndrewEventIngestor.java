@@ -1,4 +1,4 @@
-package it.xeniaprogetti.rfi.plugin.example.events;
+package it.xeniaprogetti.rfi.plugin.example.events.andrew;
 
 import org.opennms.integration.api.v1.dao.NodeDao;
 import org.opennms.integration.api.v1.events.EventForwarder;
@@ -16,37 +16,39 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.Instant;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-@Component(name = "aComEventIngestor",
-            immediate = true)
-public class AComEventIngestorComponent implements EventListener {
+@Component(name = "andrewEventIngestor",
+        immediate = true)
+public class AndrewEventIngestor implements EventListener {
 
-    private static final Logger log = LoggerFactory.getLogger(AComEventIngestorComponent.class);
+    private static final Logger log = LoggerFactory.getLogger(AndrewEventIngestor.class);
 
-    private static final String UEI_ACOM_PREFIX = "uei.opennms.org/traps/INC-MIB-AL";
-    private static final String NODE_LABEL_ACOM_PARAMETER_MATCH = ".1.3.6.1.4.1.231.7.99.4.2.1.1.11";
-    protected static final String TIME_ACOM_PARAMETER = ".1.3.6.1.4.1.231.7.99.4.2.1.1.1"; //tiAlarmDateTime
-    protected static final DateTimeFormatter TRAP_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyyMMddHHmmssZ");
-    protected static final List<String> INTERESTING_ACOM_UEIS = Arrays.asList(
-            UEI_ACOM_PREFIX + "/tiIncTrapCleared",
-            UEI_ACOM_PREFIX + "/tiIncTrapNormal",
-            UEI_ACOM_PREFIX + "/tiIncTrapWarning",
-            UEI_ACOM_PREFIX + "/tiIncTrapMinor",
-            UEI_ACOM_PREFIX + "/tiIncTrapMajor",
-            UEI_ACOM_PREFIX + "/tiIncTrapCritical"
+    private static final String UEI_ANDREW_PREFIX = "uei.opennms.org/traps/MIKOM_OMC_Alarmforwarding-MIB";
+    private static final String NODE_LABEL_ANDREW_PARAMETER_MATCH = ".1.3.6.1.4.1.6408.100.2.10.1.6";
+    protected static final String TIME_ANDREW_PARAMETER = ".1.3.6.1.4.1.6408.100.2.10.1.7"; //nodeRaiseTime
+    protected static final String TIME_ANDREW_CLEAR_PARAMETER = ".1.3.6.1.4.1.6408.100.2.10.1.8"; //nodeRaiseTime
+    protected static final DateTimeFormatter TRAP_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd,HH:mm:ss");
+    protected static final List<String> INTERESTING_ANDREW_UEIS = Arrays.asList(
+            UEI_ANDREW_PREFIX + "/mAlarmTrapIndeterminate",
+            UEI_ANDREW_PREFIX + "/mAlarmTrapCritical",
+            UEI_ANDREW_PREFIX + "/mAlarmTrapMajor",
+            UEI_ANDREW_PREFIX + "/mAlarmTrapMinor",
+            UEI_ANDREW_PREFIX + "/mAlarmTrapWarning",
+            UEI_ANDREW_PREFIX + "/mAlarmClearTrap"
     );
 
     private EventForwarder eventForwarder;
     private NodeDao nodeDao;
     private EventSubscriptionService eventSubscriptionService;
 
-    public AComEventIngestorComponent() {
+    public AndrewEventIngestor() {
     }
 
     @Reference
@@ -64,15 +66,15 @@ public class AComEventIngestorComponent implements EventListener {
 
     @Activate
     public void activate(){
-        eventSubscriptionService.addEventListener(this, INTERESTING_ACOM_UEIS);
-        log.info("AComEventIngestorComponent registered on UEIS: {}", INTERESTING_ACOM_UEIS);
+        eventSubscriptionService.addEventListener(this, INTERESTING_ANDREW_UEIS);
+        log.info("AndrewEventIngestor registered on UEIS: {}", INTERESTING_ANDREW_UEIS);
     }
 
     @Deactivate
     public void deactivate(){
         try {
-            eventSubscriptionService.removeEventListener(this, INTERESTING_ACOM_UEIS);
-            log.info("AComEventIngestorComponent deregistered");
+            eventSubscriptionService.removeEventListener(this, INTERESTING_ANDREW_UEIS);
+            log.info("AndrewEventIngestor deregistered");
         } catch (Exception e) {
             log.warn("Error while deregistering listener", e);
         }
@@ -80,7 +82,7 @@ public class AComEventIngestorComponent implements EventListener {
 
     @Override
     public String getName() {
-        return "acomEventIngestor";
+        return "andrewEventIngestor";
     }
 
     @Override
@@ -91,7 +93,7 @@ public class AComEventIngestorComponent implements EventListener {
     @Override
     public void onEvent(InMemoryEvent e) {
 
-        log.info("Arrived new event filtered to AComEventIngestorComponent: {}", e);
+        log.info("Arrived new event filtered to AndrewIngestorComponent: {}", e);
 
         ImmutableInMemoryEvent translate = translate(e);
 
@@ -101,28 +103,36 @@ public class AComEventIngestorComponent implements EventListener {
 
     protected ImmutableInMemoryEvent translate(InMemoryEvent e) {
 
-        String nodeLabel = e.getParametersByName(NODE_LABEL_ACOM_PARAMETER_MATCH).stream()
+        String nodeLabel = e.getParametersByName(NODE_LABEL_ANDREW_PARAMETER_MATCH).stream()
                 .findFirst().map(EventParameter::getValue).orElse(null);
 
         Node node = nodeLabel == null ? null : nodeDao.getNodeByLabel(nodeLabel);
+        int nodeId = node == null ? e.getNodeId() : node.getId();
 
         String uei = e.getUei().replace("/traps/", "/translator/");
 
         ImmutableInMemoryEvent.Builder builder = ImmutableInMemoryEvent.newBuilderFrom(e)
-                .setNodeId(node == null ? 1 : node.getId())
+                .setNodeId(nodeId)
                 .setUei(uei)
                 .setSource("rfi-plugin-example");
 
-        String timeEvent = e.getParametersByName(TIME_ACOM_PARAMETER).stream()
-                .findFirst().map(EventParameter::getValue).orElse(null);
+        String timeEvent = null;
+        List<EventParameter> p1 = e.getParametersByName(TIME_ANDREW_PARAMETER);
+        if (!p1.isEmpty())
+            timeEvent = p1.get(0).getValue();
+        else {
+            List<EventParameter> p2 = e.getParametersByName(TIME_ANDREW_CLEAR_PARAMETER);
+            if (!p2.isEmpty())
+                timeEvent = p2.get(0).getValue();
+        }
 
         if(timeEvent!=null){
 
             try{
-                Instant trapInstant = ZonedDateTime.parse(timeEvent, TRAP_TIME_FORMATTER).toInstant();
+                LocalDateTime localDateTime = LocalDateTime.parse(timeEvent, TRAP_TIME_FORMATTER);
+                Instant trapInstant = localDateTime.atZone(ZoneId.systemDefault()).toInstant();
                 Date trapDate = Date.from(trapInstant);
                 builder.setTime(trapDate);
-
             } catch (DateTimeParseException ex) {
                 log.error("Unable to parse event time '{}', keeping original event time", timeEvent, ex);
             }
@@ -133,5 +143,6 @@ public class AComEventIngestorComponent implements EventListener {
 
         return builder.build();
     }
+
 
 }

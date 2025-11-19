@@ -1,0 +1,56 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+   <event>
+      <uei>uei.opennms.org/translator/MIKOM_OMC_Alarmforwarding-MIB/mAlarmTrapIndeterminate</uei>
+      <event-label>MIKOM_OMC_Alarmforwarding-MIB defined trap event: mAlarmTrap</event-label>
+      <descr>An Indeterminate Alarm Trap Event occurred.</descr>
+      <operinstruct>nodeRepeaterID=%parm[#6]%, nodeEventType=%parm[#9]%, nodeProbableCause=%parm[#10]%, nodeSpecificProblem=%parm[#11]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#12]%</logmsg>
+      <severity>Indeterminate</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/MIKOM_OMC_Alarmforwarding-MIB/mAlarmTrap:%nodeid%:%parm[#2]%" alarm-type="1" auto-clean="true"/>
+   </event>
+   <event>
+      <uei>uei.opennms.org/translator/MIKOM_OMC_Alarmforwarding-MIB/mAlarmTrapCritical</uei>
+      <event-label>MIKOM_OMC_Alarmforwarding-MIB defined trap event: mAlarmTrap</event-label>
+      <descr>A Critical Alarm Trap Event occurred.</descr>
+      <operinstruct>nodeRepeaterID=%parm[#6]%, nodeEventType=%parm[#9]%, nodeProbableCause=%parm[#10]%, nodeSpecificProblem=%parm[#11]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#12]%</logmsg>
+      <severity>Critical</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/MIKOM_OMC_Alarmforwarding-MIB/mAlarmTrap:%nodeid%:%parm[#2]%" alarm-type="1" auto-clean="true"/>
+   </event>
+   <event>
+      <uei>uei.opennms.org/translator/MIKOM_OMC_Alarmforwarding-MIB/mAlarmTrapMajor</uei>
+      <event-label>MIKOM_OMC_Alarmforwarding-MIB defined trap event: mAlarmTrap</event-label>
+      <descr>A Major Alarm Trap Event occurred.</descr>
+      <operinstruct>nodeRepeaterID=%parm[#6]%, nodeEventType=%parm[#9]%, nodeProbableCause=%parm[#10]%, nodeSpecificProblem=%parm[#11]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#12]%</logmsg>
+      <severity>Major</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/MIKOM_OMC_Alarmforwarding-MIB/mAlarmTrap:%nodeid%:%parm[#2]%" alarm-type="1" auto-clean="true"/>
+   </event>
+   <event>
+      <uei>uei.opennms.org/translator/MIKOM_OMC_Alarmforwarding-MIB/mAlarmTrapMinor</uei>
+      <event-label>MIKOM_OMC_Alarmforwarding-MIB defined trap event: mAlarmTrap</event-label>
+      <descr>A Minor Alarm Trap Event occurred.</descr>
+      <operinstruct>nodeRepeaterID=%parm[#6]%, nodeEventType=%parm[#9]%, nodeProbableCause=%parm[#10]%, nodeSpecificProblem=%parm[#11]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#12]%</logmsg>
+      <severity>Minor</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/MIKOM_OMC_Alarmforwarding-MIB/mAlarmTrap:%nodeid%:%parm[#2]%" alarm-type="1" auto-clean="true"/>
+   </event>
+   <event>
+      <uei>uei.opennms.org/translator/MIKOM_OMC_Alarmforwarding-MIB/mAlarmTrapWarning</uei>
+      <event-label>MIKOM_OMC_Alarmforwarding-MIB defined trap event: mAlarmTrap</event-label>
+      <descr>A Warning Alarm Trap Event occurred.</descr>
+      <operinstruct>nodeRepeaterID=%parm[#6]%, nodeEventType=%parm[#9]%, nodeProbableCause=%parm[#10]%, nodeSpecificProblem=%parm[#11]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#12]%</logmsg>
+      <severity>Warning</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/MIKOM_OMC_Alarmforwarding-MIB/mAlarmTrap:%nodeid%:%parm[#2]%" alarm-type="1" auto-clean="true"/>
+   </event>
+   <event>
+      <uei>uei.opennms.org/translator/MIKOM_OMC_Alarmforwarding-MIB/mAlarmClearTrap</uei>
+      <event-label>MIKOM_OMC_Alarmforwarding-MIB defined trap event: mAlarmClearTrap</event-label>
+      <descr>An Alarm Clear Event occurred.</descr>
+      <operinstruct>nodeRepeaterID=%parm[#6]%, nodeEventType=%parm[#9]%, nodeProbableCause=%parm[#10]%, nodeSpecificProblem=%parm[#11]%, nodeClearMessage=%parm[#13]%</operinstruct>
+	  <logmsg dest="logndisplay">%parm[#12]%</logmsg>
+      <severity>Normal</severity>
+	  <alarm-data reduction-key="%uei%:%nodeid%:%parm[#2]%" alarm-type="2" auto-clean="true" clear-key="uei.opennms.org/translator/MIKOM_OMC_Alarmforwarding-MIB/mAlarmTrap:%nodeid%:%parm[#2]%"/>	  
+   </event>
+</events>
