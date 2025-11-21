@@ -1,0 +1,62 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+   <event>
+      <uei>uei.opennms.org/translator/AEM3-MIB/aemAlarmNotificationIndeterminate</uei>
+      <event-label>AEM3-MIB defined trap event: aemAlarmNotification</event-label>
+      <descr>AEM alarm notification.</descr>
+	  <operinstruct>AEM raised alarm notification %parm[#1]%</operinstruct>			  
+      <logmsg dest="logndisplay">%parm[#5]%:%parm[#9]%:%parm[#10]%</logmsg>
+      <severity>Indeterminate</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/AEM3-MIB/aemAlarmNotification:%nodeid%:%parm[#2]%:%parm[#5]%" alarm-type="1" auto-clean="true"/>	  
+   </event>
+   
+   <event>
+      <uei>uei.opennms.org/translator/AEM3-MIB/aemAlarmNotificationCritical</uei>
+      <event-label>AEM3-MIB defined trap event: aemAlarmNotification</event-label>
+      <descr>AEM alarm notification.</descr>
+	  <operinstruct>AEM raised alarm notification %parm[#1]%</operinstruct>			  
+      <logmsg dest="logndisplay">%parm[#5]%:%parm[#9]%:%parm[#10]%</logmsg>
+      <severity>Critical</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/AEM3-MIB/aemAlarmNotification:%nodeid%:%parm[#2]%:%parm[#5]%" alarm-type="1" auto-clean="true"/>	  
+   </event>
+
+   <event>
+      <uei>uei.opennms.org/translator/AEM3-MIB/aemAlarmNotificationMajor</uei>
+      <event-label>AEM3-MIB defined trap event: aemAlarmNotification</event-label>
+      <descr>AEM alarm notification.</descr>
+	  <operinstruct>AEM raised alarm notification %parm[#1]%</operinstruct>			  
+      <logmsg dest="logndisplay">%parm[#5]%:%parm[#9]%:%parm[#10]%</logmsg>
+      <severity>Major</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/AEM3-MIB/aemAlarmNotification:%nodeid%:%parm[#2]%:%parm[#5]%" alarm-type="1" auto-clean="true"/>	  
+   </event>
+
+   <event>
+      <uei>uei.opennms.org/translator/AEM3-MIB/aemAlarmNotificationMinor</uei>
+      <event-label>AEM3-MIB defined trap event: aemAlarmNotification</event-label>
+      <descr>AEM alarm notification.</descr>
+	  <operinstruct>AEM raised alarm notification %parm[#1]%</operinstruct>			  
+      <logmsg dest="logndisplay">%parm[#5]%:%parm[#9]%:%parm[#10]%</logmsg>
+      <severity>Minor</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/AEM3-MIB/aemAlarmNotification:%nodeid%:%parm[#2]%:%parm[#5]%" alarm-type="1" auto-clean="true"/>	  
+   </event>
+
+   <event>
+      <uei>uei.opennms.org/translator/AEM3-MIB/aemAlarmNotificationWarning</uei>
+      <event-label>AEM3-MIB defined trap event: aemAlarmNotification</event-label>
+      <descr>AEM alarm notification.</descr>
+	  <operinstruct>AEM raised alarm notification %parm[#1]%</operinstruct>			  
+      <logmsg dest="logndisplay">%parm[#5]%:%parm[#9]%:%parm[#10]%</logmsg>
+      <severity>Warning</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/AEM3-MIB/aemAlarmNotification:%nodeid%:%parm[#2]%:%parm[#5]%" alarm-type="1" auto-clean="true"/>	  
+   </event>
+
+   <event>
+      <uei>uei.opennms.org/translator/AEM3-MIB/aemAlarmClearanceNotification</uei>
+      <event-label>AEM3-MIB defined trap event: aemAlarmClearanceNotification</event-label>
+      <descr>AEM clear notification.</descr>
+	  <operinstruct>AEM raised clear notification %parm[#1]%</operinstruct>			  
+      <logmsg dest="logndisplay">%parm[#5]%:%parm[#9]%:%parm[#10]%</logmsg>
+      <severity>Normal</severity>
+      <alarm-data reduction-key="%uei%:%nodeid%:%parm[#2]%:%parm[#5]%" alarm-type="2" auto-clean="true" clear-key="uei.opennms.org/translator/AEM3-MIB/aemAlarmNotification:%nodeid%:%parm[#2]%:%parm[#5]%"/>	  
+   </event>
+
+</events>

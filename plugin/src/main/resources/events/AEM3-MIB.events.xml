@@ -1,0 +1,349 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.8829.100.1.1.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>1</vbvalue>
+            <vbvalue>99</vbvalue>
+         </varbind>
+      </mask>	  
+      <uei>uei.opennms.org/traps/AEM3-MIB/aemAlarmNotificationIndeterminate</uei>
+      <event-label>AEM3-MIB defined trap event: aemAlarmNotification</event-label>
+      <descr>AEM alarm notification.</descr>
+	  <operinstruct>AEM raised alarm notification %parm[#1]%</operinstruct>			  
+      <logmsg dest="logndisplay">%parm[#5]%:%parm[#9]%:%parm[#10]%</logmsg>
+      <severity>Indeterminate</severity>
+   </event>
+   
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.8829.100.1.1.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>2</vbvalue>
+            <vbvalue>6</vbvalue>
+         </varbind>
+      </mask>	  
+      <uei>uei.opennms.org/traps/AEM3-MIB/aemAlarmNotificationCritical</uei>
+      <event-label>AEM3-MIB defined trap event: aemAlarmNotification</event-label>
+      <descr>AEM alarm notification.</descr>
+	  <operinstruct>AEM raised alarm notification %parm[#1]%</operinstruct>			  
+      <logmsg dest="logndisplay">%parm[#5]%:%parm[#9]%:%parm[#10]%</logmsg>
+      <severity>Critical</severity>
+   </event>
+
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.8829.100.1.1.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>3</vbvalue>
+         </varbind>
+      </mask>	  
+      <uei>uei.opennms.org/traps/AEM3-MIB/aemAlarmNotificationMajor</uei>
+      <event-label>AEM3-MIB defined trap event: aemAlarmNotification</event-label>
+      <descr>AEM alarm notification.</descr>
+	  <operinstruct>AEM raised alarm notification %parm[#1]%</operinstruct>			  
+      <logmsg dest="logndisplay">%parm[#5]%:%parm[#9]%:%parm[#10]%</logmsg>
+      <severity>Major</severity>
+   </event>
+
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.8829.100.1.1.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>4</vbvalue>
+         </varbind>
+      </mask>	  
+      <uei>uei.opennms.org/traps/AEM3-MIB/aemAlarmNotificationMinor</uei>
+      <event-label>AEM3-MIB defined trap event: aemAlarmNotification</event-label>
+      <descr>AEM alarm notification.</descr>
+	  <operinstruct>AEM raised alarm notification %parm[#1]%</operinstruct>			  
+      <logmsg dest="logndisplay">%parm[#5]%:%parm[#9]%:%parm[#10]%</logmsg>
+      <severity>Minor</severity>
+   </event>
+
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.8829.100.1.1.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>5</vbvalue>
+         </varbind>
+      </mask>	  
+      <uei>uei.opennms.org/traps/AEM3-MIB/aemAlarmNotificationWarning</uei>
+      <event-label>AEM3-MIB defined trap event: aemAlarmNotification</event-label>
+      <descr>AEM alarm notification.</descr>
+	  <operinstruct>AEM raised alarm notification %parm[#1]%</operinstruct>			  
+      <logmsg dest="logndisplay">%parm[#5]%:%parm[#9]%:%parm[#10]%</logmsg>
+      <severity>Warning</severity>
+   </event>
+
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.8829.100.1.1.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>2</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/traps/AEM3-MIB/aemAlarmClearanceNotification</uei>
+      <event-label>AEM3-MIB defined trap event: aemAlarmClearanceNotification</event-label>
+      <descr>AEM clear notification.</descr>
+	  <operinstruct>AEM raised clear notification %parm[#1]%</operinstruct>			  
+      <logmsg dest="logndisplay">%parm[#5]%:%parm[#9]%:%parm[#10]%</logmsg>
+      <severity>Normal</severity>
+   </event>
+
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.8829.100.1.1.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>3</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>3</vbnumber>
+            <vbvalue>1</vbvalue>
+            <vbvalue>99</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/AEM3-MIB/aemInformationNotificationIndeterminate</uei>
+      <event-label>AEM3-MIB defined trap event: aemInformationNotification</event-label>
+      <descr>AEM Information notification.</descr>
+	  <operinstruct>AEM raised Information notification %parm[#1]%</operinstruct>			  
+      <logmsg dest="logndisplay">%parm[#2]%</logmsg>
+      <severity>Indeterminate</severity>
+      <alarm-data reduction-key="uei.opennms.org/traps/AEM3-MIB/aemInformationNotification:%nodeid%:%parm[#1]%" alarm-type="3" auto-clean="true"/>	  
+   </event>
+
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.8829.100.1.1.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>3</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>3</vbnumber>
+            <vbvalue>2</vbvalue>
+            <vbvalue>6</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/AEM3-MIB/aemInformationNotificationCritical</uei>
+      <event-label>AEM3-MIB defined trap event: aemInformationNotification</event-label>
+      <descr>AEM Information notification.</descr>
+	  <operinstruct>AEM raised Information notification %parm[#1]%</operinstruct>			  
+	  <logmsg dest="logndisplay">%parm[#2]%</logmsg>
+      <severity>Critical</severity>
+	  <alarm-data reduction-key="uei.opennms.org/traps/AEM3-MIB/aemInformationNotification:%nodeid%:%parm[#1]%" alarm-type="3" auto-clean="true"/>	  
+   </event>
+
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.8829.100.1.1.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>3</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>3</vbnumber>
+            <vbvalue>3</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/AEM3-MIB/aemInformationNotificationMajor</uei>
+      <event-label>AEM3-MIB defined trap event: aemInformationNotification</event-label>
+      <descr>AEM Information notification.</descr>
+	  <operinstruct>AEM raised Information notification %parm[#1]%</operinstruct>			  
+	  <logmsg dest="logndisplay">%parm[#2]%</logmsg>
+      <severity>Major</severity>
+	  <alarm-data reduction-key="uei.opennms.org/traps/AEM3-MIB/aemInformationNotification:%nodeid%:%parm[#1]%" alarm-type="3" auto-clean="true"/>	  
+   </event>
+
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.8829.100.1.1.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>3</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>3</vbnumber>
+            <vbvalue>4</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/AEM3-MIB/aemInformationNotificationMinor</uei>
+      <event-label>AEM3-MIB defined trap event: aemInformationNotification</event-label>
+      <descr>AEM Information notification.</descr>
+	  <operinstruct>AEM raised Information notification %parm[#1]%</operinstruct>			  
+	  <logmsg dest="logndisplay">%parm[#2]%</logmsg>
+      <severity>Minor</severity>
+	  <alarm-data reduction-key="uei.opennms.org/traps/AEM3-MIB/aemInformationNotification:%nodeid%:%parm[#1]%" alarm-type="3" auto-clean="true"/>	  
+   </event>
+
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.8829.100.1.1.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>3</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>3</vbnumber>
+            <vbvalue>5</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/AEM3-MIB/aemInformationNotificationWarning</uei>
+      <event-label>AEM3-MIB defined trap event: aemInformationNotification</event-label>
+      <descr>AEM Information notification.</descr>
+	  <operinstruct>AEM raised Information notification %parm[#1]%</operinstruct>			  
+	  <logmsg dest="logndisplay">%parm[#2]%</logmsg>
+      <severity>Warning</severity>
+	  <alarm-data reduction-key="uei.opennms.org/traps/AEM3-MIB/aemInformationNotification:%nodeid%:%parm[#1]%" alarm-type="3" auto-clean="true"/>	  
+   </event>
+
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.8829.100.1.1.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>4</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/traps/AEM3-MIB/aemHeartbeatNotification</uei>
+      <event-label>AEM3-MIB defined trap event: aemHeartbeatNotification</event-label>
+      <descr>AEM Heartbeat notification.</descr>
+	  <operinstruct>AEM raised Heartbeat notification %parm[#1]%</operinstruct>			  
+      <logmsg dest="logndisplay">aemHeartbeatNotification trap received: aemNotificationID=%parm[#1]%, aemUniqueRef=%parm[#2]%, aemAlarmTime=%parm[#3]%, 	aemEquipmentTag=%parm[#4]%</logmsg>
+      <severity>Normal</severity>
+   </event>
+   
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.8829.100.1.1.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>100</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/traps/AEM3-MIB/aemControlRequestNotification</uei>
+      <event-label>AEM3-MIB defined trap event: aemControlRequestNotification</event-label>
+      <descr>AEM Control request notification.</descr>
+	  <operinstruct>AEM raised Control request notification %parm[#1]%</operinstruct>			  
+      <logmsg dest="logndisplay">aemControlRequestNotification trap received: aemUniqueRef=%parm[#1]%, aemControlCommand=%parm[#2]%, aemControlParameters=%parm[#3]%, aemControlTime=%parm[#4]%</logmsg>
+      <severity>Normal</severity>
+   </event>
+</events>
