@@ -23,6 +23,8 @@ import static org.mockito.Mockito.*;
 public class AndrewEventIngestorTest {
 
     private final static String EVENT_DATE = "2025-11-13,11:20:00";
+    private final static String CLEAR_TRAP = "1.3.6.1.4.1.6408.100.1.1.0.2";
+    private final static String ALARM_TRAP = "1.3.6.1.4.1.6408.100.1.1.0.1";
 
     @Test
     public void testTranslate(){
@@ -71,6 +73,7 @@ public class AndrewEventIngestorTest {
         assertEquals("rfi-plugin-example", eventTranslated.getSource());
         assertEquals(getEventDateFromString(), eventTranslated.getTime());
         assertEquals(EVENT_DATE, eventTranslated.getParametersByName(AndrewEventIngestor.TIME_ANDREW_PARAMETER).get(0).getValue());
+        assertEquals(ALARM_TRAP, eventTranslated.getParametersByName(AndrewEventIngestor.OID_ANDREW_TRAP_PARAMETER).get(0).getValue());
     }
 
     @Test
@@ -98,6 +101,7 @@ public class AndrewEventIngestorTest {
         assertEquals("rfi-plugin-example", eventTranslated.getSource());
         assertEquals(getEventDateFromString(), eventTranslated.getTime());
         assertEquals(EVENT_DATE, eventTranslated.getParametersByName(AndrewEventIngestor.TIME_ANDREW_PARAMETER).get(0).getValue());
+        assertEquals(ALARM_TRAP, eventTranslated.getParametersByName(AndrewEventIngestor.OID_ANDREW_TRAP_PARAMETER).get(0).getValue());
     }
 
     @Test
@@ -125,6 +129,7 @@ public class AndrewEventIngestorTest {
         assertEquals("rfi-plugin-example", eventTranslated.getSource());
         assertEquals(getEventDateFromString(), eventTranslated.getTime());
         assertEquals(EVENT_DATE, eventTranslated.getParametersByName(AndrewEventIngestor.TIME_ANDREW_PARAMETER).get(0).getValue());
+        assertEquals(ALARM_TRAP, eventTranslated.getParametersByName(AndrewEventIngestor.OID_ANDREW_TRAP_PARAMETER).get(0).getValue());
     }
 
     @Test
@@ -152,6 +157,7 @@ public class AndrewEventIngestorTest {
         assertEquals("rfi-plugin-example", eventTranslated.getSource());
         assertEquals(getEventDateFromString(), eventTranslated.getTime());
         assertEquals(EVENT_DATE, eventTranslated.getParametersByName(AndrewEventIngestor.TIME_ANDREW_PARAMETER).get(0).getValue());
+        assertEquals(ALARM_TRAP, eventTranslated.getParametersByName(AndrewEventIngestor.OID_ANDREW_TRAP_PARAMETER).get(0).getValue());
     }
 
     @Test
@@ -179,6 +185,7 @@ public class AndrewEventIngestorTest {
         assertEquals("rfi-plugin-example", eventTranslated.getSource());
         assertEquals(getEventDateFromString(), eventTranslated.getTime());
         assertEquals(EVENT_DATE, eventTranslated.getParametersByName(AndrewEventIngestor.TIME_ANDREW_PARAMETER).get(0).getValue());
+        assertEquals(ALARM_TRAP, eventTranslated.getParametersByName(AndrewEventIngestor.OID_ANDREW_TRAP_PARAMETER).get(0).getValue());
     }
 
     @Test
@@ -194,7 +201,7 @@ public class AndrewEventIngestorTest {
         andrewIngestor.setEventForwarder(eventForwarder);
 
         Date date = new Date();
-        InMemoryEvent event = getEvent("uei.opennms.org/traps/MIKOM_OMC_Alarmforwarding-MIB/mAlarmClearTrap", date);
+        InMemoryEvent event = getEventClear("uei.opennms.org/traps/MIKOM_OMC_Alarmforwarding-MIB/mAlarmClearTrap", date);
         andrewIngestor.onEvent(event);
 
         final ArgumentCaptor<InMemoryEvent> capture = ArgumentCaptor.forClass(InMemoryEvent.class);
@@ -205,7 +212,8 @@ public class AndrewEventIngestorTest {
         assertEquals("uei.opennms.org/translator/MIKOM_OMC_Alarmforwarding-MIB/mAlarmClearTrap", eventTranslated.getUei());
         assertEquals("rfi-plugin-example", eventTranslated.getSource());
         assertEquals(getEventDateFromString(), eventTranslated.getTime());
-        assertEquals(EVENT_DATE, eventTranslated.getParametersByName(AndrewEventIngestor.TIME_ANDREW_PARAMETER).get(0).getValue());
+        assertEquals(EVENT_DATE, eventTranslated.getParametersByName(AndrewEventIngestor.TIME_ANDREW_CLEAR_PARAMETER).get(0).getValue());
+        assertEquals(CLEAR_TRAP, eventTranslated.getParametersByName(AndrewEventIngestor.OID_ANDREW_TRAP_PARAMETER).get(0).getValue());
     }
 
     @Test
@@ -272,10 +280,32 @@ public class AndrewEventIngestorTest {
                 .setTime(date)
                 .setNodeId(1)
                 .addParameter(ImmutableEventParameter.newBuilder()
+                        .setName(AndrewEventIngestor.OID_ANDREW_TRAP_PARAMETER)
+                        .setValue(ALARM_TRAP)
+                        .build())
+                .addParameter(ImmutableEventParameter.newBuilder()
                         .setName(AndrewEventIngestor.TIME_ANDREW_PARAMETER)
                         .setValue(EVENT_DATE)
                         .build())
-                .setSource("AcmTest")
+                .setSource("AndrewTest")
+                .build();
+    }
+
+    private static InMemoryEvent getEventClear(String uei, Date date){
+
+        return ImmutableInMemoryEvent.newBuilder()
+                .setUei(uei)
+                .setTime(date)
+                .setNodeId(1)
+                .addParameter(ImmutableEventParameter.newBuilder()
+                        .setName(AndrewEventIngestor.OID_ANDREW_TRAP_PARAMETER)
+                        .setValue(CLEAR_TRAP)
+                        .build())
+                .addParameter(ImmutableEventParameter.newBuilder()
+                        .setName(AndrewEventIngestor.TIME_ANDREW_CLEAR_PARAMETER)
+                        .setValue(EVENT_DATE)
+                        .build())
+                .setSource("AndrewTest")
                 .build();
     }
 

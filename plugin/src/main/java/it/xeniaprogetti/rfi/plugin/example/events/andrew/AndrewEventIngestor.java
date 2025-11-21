@@ -32,6 +32,8 @@ public class AndrewEventIngestor implements EventListener {
 
     private static final String UEI_ANDREW_PREFIX = "uei.opennms.org/traps/MIKOM_OMC_Alarmforwarding-MIB";
     private static final String NODE_LABEL_ANDREW_PARAMETER_MATCH = ".1.3.6.1.4.1.6408.100.2.10.1.6";
+    private static final String END_OID_CLEAR_TRAP = "1.0.2";
+    protected static final String OID_ANDREW_TRAP_PARAMETER = ".1.3.6.1.6.3.1.1.4.1.0";
     protected static final String TIME_ANDREW_PARAMETER = ".1.3.6.1.4.1.6408.100.2.10.1.7"; //nodeRaiseTime
     protected static final String TIME_ANDREW_CLEAR_PARAMETER = ".1.3.6.1.4.1.6408.100.2.10.1.8"; //nodeRaiseTime
     protected static final DateTimeFormatter TRAP_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd,HH:mm:ss");
@@ -117,13 +119,28 @@ public class AndrewEventIngestor implements EventListener {
                 .setSource("rfi-plugin-example");
 
         String timeEvent = null;
-        List<EventParameter> p1 = e.getParametersByName(TIME_ANDREW_PARAMETER);
+        /*List<EventParameter> p1 = e.getParametersByName(TIME_ANDREW_PARAMETER);
         if (!p1.isEmpty())
             timeEvent = p1.get(0).getValue();
         else {
             List<EventParameter> p2 = e.getParametersByName(TIME_ANDREW_CLEAR_PARAMETER);
             if (!p2.isEmpty())
                 timeEvent = p2.get(0).getValue();
+        }*/
+        String trapType = e.getParametersByName(OID_ANDREW_TRAP_PARAMETER).stream()
+                .findFirst().map(EventParameter::getValue).orElse(null);
+
+        if(trapType != null){
+            log.info("trapType value = {}", trapType);
+            if(trapType.endsWith(END_OID_CLEAR_TRAP)){
+                timeEvent = e.getParametersByName(TIME_ANDREW_CLEAR_PARAMETER).stream()
+                        .findFirst().map(EventParameter::getValue).orElse(null);
+            }else{
+                timeEvent = e.getParametersByName(TIME_ANDREW_PARAMETER).stream()
+                        .findFirst().map(EventParameter::getValue).orElse(null);
+            }
+        }else{
+            log.error("The trap type oid is not present.");
         }
 
         if(timeEvent!=null){
