@@ -1,4 +1,4 @@
-package it.xeniaprogetti.rfi.plugin.example.events;
+package it.xeniaprogetti.rfi.plugin.example.events.acom;
 
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -15,7 +15,7 @@ import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.util.*;
 
-import static it.xeniaprogetti.rfi.plugin.example.events.AComEventIngestor.TRAP_TIME_FORMATTER;
+import static it.xeniaprogetti.rfi.plugin.example.events.acom.AComEventIngestor.TRAP_TIME_FORMATTER;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 

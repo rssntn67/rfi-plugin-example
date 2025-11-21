@@ -80,7 +80,7 @@
         <bean class="it.xeniaprogetti.rfi.plugin.example.events.EventConfExtension"/>
     </service>
 
-    <!--bean id="aComEventIngestor" class="it.xeniaprogetti.rfi.plugin.example.events.AComEventIngestor"
+    <!--bean id="aComEventIngestor" class="it.xeniaprogetti.rfi.plugin.example.events.acom.AComEventIngestor"
           init-method="start" destroy-method="destroy">
         <argument ref="eventForwarder"/>
         <argument ref="nodeDao"/>

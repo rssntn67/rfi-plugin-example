@@ -1,6 +1,5 @@
-package it.xeniaprogetti.rfi.plugin.example.events;
+package it.xeniaprogetti.rfi.plugin.example.events.acom;
 
-import org.opennms.integration.api.v1.dao.AlarmDao;
 import org.opennms.integration.api.v1.dao.NodeDao;
 import org.opennms.integration.api.v1.events.EventForwarder;
 import org.opennms.integration.api.v1.events.EventListener;
@@ -9,6 +8,10 @@ import org.opennms.integration.api.v1.model.EventParameter;
 import org.opennms.integration.api.v1.model.InMemoryEvent;
 import org.opennms.integration.api.v1.model.Node;
 import org.opennms.integration.api.v1.model.immutables.ImmutableInMemoryEvent;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,15 +23,17 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class AComEventIngestor implements EventListener {
+@Component(name = "aComEventIngestor",
+            immediate = true)
+public class AComEventIngestorComponent implements EventListener {
 
-    private static final Logger log = LoggerFactory.getLogger(AComEventIngestor.class);
+    private static final Logger log = LoggerFactory.getLogger(AComEventIngestorComponent.class);
 
     private static final String UEI_ACOM_PREFIX = "uei.opennms.org/traps/INC-MIB-AL";
     private static final String NODE_LABEL_ACOM_PARAMETER_MATCH = ".1.3.6.1.4.1.231.7.99.4.2.1.1.11";
     protected static final String TIME_ACOM_PARAMETER = ".1.3.6.1.4.1.231.7.99.4.2.1.1.1"; //tiAlarmDateTime
     protected static final DateTimeFormatter TRAP_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyyMMddHHmmssZ");
-    private static final List<String> INTERESTING_ACOM_UEIS = Arrays.asList(
+    protected static final List<String> INTERESTING_ACOM_UEIS = Arrays.asList(
             UEI_ACOM_PREFIX + "/tiIncTrapCleared",
             UEI_ACOM_PREFIX + "/tiIncTrapNormal",
             UEI_ACOM_PREFIX + "/tiIncTrapWarning",
@@ -37,33 +42,37 @@ public class AComEventIngestor implements EventListener {
             UEI_ACOM_PREFIX + "/tiIncTrapCritical"
     );
 
-    private final EventForwarder eventForwarder;
-    private final NodeDao nodeDao;
-    private final AlarmDao alarmDao;
-    private final EventSubscriptionService eventSubscriptionService;
+    private EventForwarder eventForwarder;
+    private NodeDao nodeDao;
+    private EventSubscriptionService eventSubscriptionService;
 
-    private boolean syncAct = false;
-    private Date startSyncDate;
+    public AComEventIngestorComponent() {
+    }
 
-    public AComEventIngestor(EventForwarder eventForwarder,
-                             NodeDao nodeDao,
-                             AlarmDao alarmDao,
-                             EventSubscriptionService eventSubscriptionService) {
+    @Reference
+    public void setEventForwarder(EventForwarder eventForwarder) {
         this.eventForwarder = eventForwarder;
+    }
+    @Reference
+    public void setNodeDao(NodeDao nodeDao) {
         this.nodeDao = nodeDao;
-        this.alarmDao = alarmDao;
+    }
+    @Reference
+    public void setEventSubscriptionService(EventSubscriptionService eventSubscriptionService) {
         this.eventSubscriptionService = eventSubscriptionService;
     }
 
-    public void start(){
+    @Activate
+    public void activate(){
         eventSubscriptionService.addEventListener(this, INTERESTING_ACOM_UEIS);
-        log.info("AComEventIngestor registered on UEIS: {}", INTERESTING_ACOM_UEIS);
+        log.info("AComEventIngestorComponent registered on UEIS: {}", INTERESTING_ACOM_UEIS);
     }
 
-    public void destroy() {
+    @Deactivate
+    public void deactivate(){
         try {
             eventSubscriptionService.removeEventListener(this, INTERESTING_ACOM_UEIS);
-            log.info("AComEventIngestor deregistered");
+            log.info("AComEventIngestorComponent deregistered");
         } catch (Exception e) {
             log.warn("Error while deregistering listener", e);
         }
@@ -82,7 +91,7 @@ public class AComEventIngestor implements EventListener {
     @Override
     public void onEvent(InMemoryEvent e) {
 
-        log.info("Arrived new event filtered: {}", e);
+        log.info("Arrived new event filtered to AComEventIngestorComponent: {}", e);
 
         ImmutableInMemoryEvent translate = translate(e);
 
@@ -123,20 +132,6 @@ public class AComEventIngestor implements EventListener {
         }
 
         return builder.build();
-    }
-
-    public synchronized void startSyncActive(Date startSyncDate) {
-        syncAct = true;
-        this.startSyncDate = startSyncDate;
-
-        //clean all alarms
-        alarmDao.getAlarms().stream()
-                .filter(a -> { return a.getReductionKey().startsWith(UEI_ACOM_PREFIX) && a.getLastEventTime().before(startSyncDate); })
-                .forEach(a -> alarmDao.clear(a.getId()));
-    }
-
-    public synchronized void endSync() {
-        syncAct = false;
     }
 
 }
