@@ -15,7 +15,9 @@ public class EventConfExtension implements org.opennms.integration.api.v1.config
             "MIKOM_OMC_Alarmforwarding-MIB.events.xml",
             "MIKOM_OMC_Alarmforwarding-MIB.translator.events.xml",
             "AEM3-MIB.events.xml",
-            "AEM3-MIB.translator.events.xml"
+            "AEM3-MIB.translator.events.xml",
+            "PBH-MIB-ALM.events.xml",
+            "PBH-MIB-ALM.translator.events.xml"
     );
 
     @Override

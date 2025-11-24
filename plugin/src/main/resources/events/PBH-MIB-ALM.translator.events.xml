@@ -1,0 +1,119 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+    <event>
+        <uei>uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapAlarmIndeterminate</uei>
+        <event-label>PBH defined translated event: pbhEventTrapAlarmIndeterminate</event-label>
+        <descr>Indeterminate Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Indeterminate</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapAlarmInformational</uei>
+        <event-label>PBH defined translated event: pbhEventTrapAlarmInformational</event-label>
+        <descr>Informational Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Normal</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapAlarmWarning</uei>
+        <event-label>PBH defined translated event: pbhEventTrapAlarmWarning</event-label>
+        <descr>Warning Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Warning</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapAlarmMinor</uei>
+        <event-label>PBH defined translated event: pbhEventTrapAlarmMinor</event-label>
+        <descr>Minor Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Minor</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapAlarmMajor</uei>
+        <event-label>PBH defined translated event: pbhEventTrapAlarmMajor</event-label>
+        <descr>Major Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Major</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapAlarmCritical</uei>
+        <event-label>PBH defined translated event: pbhEventTrapAlarmCritical</event-label>
+        <descr>Critical Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Critical</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+	<event>
+        <uei>uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapClear</uei>
+        <event-label>PBH defined translated event: pbhEventTrapClear</event-label>
+        <descr>Clear Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Normal</severity>
+        <alarm-data reduction-key="%uei%:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="2" auto-clean="true" clear-key="uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapNotificationIndeterminate</uei>
+        <event-label>PBH defined translated event: pbhEventTrapNotificationIndeterminate</event-label>
+        <descr>Indeterminate Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Indeterminate</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapNotification:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapNotificationInformational</uei>
+        <event-label>PBH defined translated event: pbhEventTrapNotificationInformational</event-label>
+        <descr>Informational Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Normal</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapNotification:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapNotificationWarning</uei>
+        <event-label>PBH defined translated event: pbhEventTrapNotificationWarning</event-label>
+        <descr>Warning Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Warning</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/PBH-MIB-ALARM/usEventNotificationAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapNotificationMinor</uei>
+        <event-label>PBH defined translated event: pbhEventTrapNotificationMinor</event-label>
+        <descr>Minor Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Minor</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapNotification:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapNotificationMajor</uei>
+        <event-label>PBH defined translated event: usEventNotificationAlarmMajor</event-label>
+        <descr>Major Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Major</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapNotification:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapNotificationCritical</uei>
+        <event-label>PBH defined translated event: pbhEventTrapNotificationCritical</event-label>
+        <descr>Critical Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Critical</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/PBH-MIB-ALARM/pbhEventTrapNotification:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>	
+</events>
