@@ -1,0 +1,268 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+<!-- ###############################################################
+     ############ Event smTrapNotificationInformational ############
+	 ############################################################### -->
+	<event>
+		<mask>
+			<maskelement>
+				<mename>id</mename>
+				<mevalue>.1.3.6.1.4.1.733</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>generic</mename>
+				<mevalue>6</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>specific</mename>
+				<mevalue>4</mevalue>
+			</maskelement>
+			<varbind>
+				<vbnumber>9</vbnumber>
+				<vbvalue>1</vbvalue>
+				<vbvalue>2</vbvalue>
+			</varbind>
+		</mask>
+		<uei>uei.opennms.org/traps/SMARTS-94-MIB/smTrapNotificationInformational</uei>
+		<event-label>SMARTS-94-MIB defined trap event: smTrapNotificationInformational</event-label>
+		<severity>Normal</severity>
+		<logmsg dest="logndisplay">%parm[#11]%</logmsg>
+		<descr>A trap describing an Informational root cause notification.</descr>
+		<operinstruct>%parm[#7]%</operinstruct>		
+	</event>
+
+<!-- #########################################################
+     ############ Event smTrapNotificationWarning ############
+	 ######################################################### -->
+	<event>
+		<mask>
+			<maskelement>
+				<mename>id</mename>
+				<mevalue>.1.3.6.1.4.1.733</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>generic</mename>
+				<mevalue>6</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>specific</mename>
+				<mevalue>4</mevalue>
+			</maskelement>
+			<varbind>
+				<vbnumber>9</vbnumber>
+				<vbvalue>3</vbvalue>
+			</varbind>
+		</mask>
+		<uei>uei.opennms.org/traps/SMARTS-94-MIB/smTrapNotificationWarning</uei>
+		<event-label>SMARTS-94-MIB defined trap event: smTrapNotificationWarning</event-label>
+		<severity>Warning</severity>
+		<logmsg dest="logndisplay">%parm[#11]%</logmsg>
+		<descr>A trap describing a Warning root cause notification.</descr>
+		<operinstruct>%parm[#7]%</operinstruct>		
+	</event>
+
+<!-- #######################################################
+     ############ Event smTrapNotificationMinor ############
+	 ####################################################### -->
+	<event>
+		<mask>
+			<maskelement>
+				<mename>id</mename>
+				<mevalue>.1.3.6.1.4.1.733</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>generic</mename>
+				<mevalue>6</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>specific</mename>
+				<mevalue>4</mevalue>
+			</maskelement>
+			<varbind>
+				<vbnumber>9</vbnumber>
+				<vbvalue>4</vbvalue>
+			</varbind>
+		</mask>
+		<uei>uei.opennms.org/traps/SMARTS-94-MIB/smTrapNotificationMinor</uei>
+		<event-label>SMARTS-94-MIB defined trap event: smTrapNotificationMinor</event-label>
+		<severity>Minor</severity>
+		<logmsg dest="logndisplay">%parm[#11]%</logmsg>
+		<descr>A trap describing a Minor root cause notification.</descr>
+		<operinstruct>%parm[#7]%</operinstruct>		
+	</event>
+
+<!-- #######################################################
+     ############ Event smTrapNotificationMajor ############
+	 ####################################################### -->
+	<event>
+		<mask>
+			<maskelement>
+				<mename>id</mename>
+				<mevalue>.1.3.6.1.4.1.733</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>generic</mename>
+				<mevalue>6</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>specific</mename>
+				<mevalue>4</mevalue>
+			</maskelement>
+			<varbind>
+				<vbnumber>9</vbnumber>
+				<vbvalue>5</vbvalue>
+			</varbind>
+		</mask>
+		<uei>uei.opennms.org/traps/SMARTS-94-MIB/smTrapNotificationMajor</uei>
+		<event-label>SMARTS-94-MIB defined trap event: smTrapNotificationMajor</event-label>
+		<severity>Major</severity>
+		<logmsg dest="logndisplay">%parm[#11]%</logmsg>
+		<descr>A trap describing a Major root cause notification.</descr>
+		<operinstruct>%parm[#7]%</operinstruct>		
+	</event>
+
+<!-- ##########################################################
+     ############ Event smTrapNotificationCritical ############
+	 ########################################################## -->
+	<event>
+		<mask>
+			<maskelement>
+				<mename>id</mename>
+				<mevalue>.1.3.6.1.4.1.733</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>generic</mename>
+				<mevalue>6</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>specific</mename>
+				<mevalue>4</mevalue>
+			</maskelement>
+			<varbind>
+				<vbnumber>9</vbnumber>
+				<vbvalue>6</vbvalue>
+			</varbind>
+		</mask>
+		<uei>uei.opennms.org/traps/SMARTS-94-MIB/smTrapNotificationCritical</uei>
+		<event-label>SMARTS-94-MIB defined trap event: smTrapNotificationCritical</event-label>
+		<severity>Critical</severity>
+		<logmsg dest="logndisplay">%parm[#11]%</logmsg>
+		<descr>A trap describing a Critical root cause notification.</descr>
+		<operinstruct>%parm[#7]%</operinstruct>		
+	</event>
+
+<!-- #######################################################
+     ############ Event smTrapNotificationClear ############
+	 ####################################################### -->
+	<event>
+		<mask>
+			<maskelement>
+				<mename>id</mename>
+				<mevalue>.1.3.6.1.4.1.733</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>generic</mename>
+				<mevalue>6</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>specific</mename>
+				<mevalue>7</mevalue>
+			</maskelement>
+		</mask>
+		<uei>uei.opennms.org/traps/SMARTS-94-MIB/smTrapNotificationClear</uei>
+		<event-label>SMARTS-94-MIB defined trap event: smTrapNotificationClear</event-label>
+		<severity>Normal</severity>
+		<logmsg dest="logndisplay">%parm[#11]%</logmsg>
+		<descr>%parm[#7]%</descr>
+	</event>
+
+	<event>
+		<mask>
+			<maskelement>
+				<mename>id</mename>
+				<mevalue>.1.3.6.1.4.1.733</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>generic</mename>
+				<mevalue>6</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>specific</mename>
+				<mevalue>5</mevalue>
+			</maskelement>
+		</mask>
+		<uei>uei.opennms.org/traps/SMARTS-94-MIB/smTrapCertaintyChange</uei>
+		<event-label>SMARTS-94-MIB defined trap event: smTrapCertaintyChange</event-label>
+		<logmsg dest="logndisplay">smTrapCertaintyChange trap received: %parm[#11]%</logmsg>
+		<descr>A trap indicating a certainty change of trap certainty change notification.</descr>
+		<operinstruct>%parm[#7]%</operinstruct>				
+		<severity>Normal</severity>
+	</event>
+	<event>
+		<mask>
+			<maskelement>
+				<mename>id</mename>
+				<mevalue>.1.3.6.1.4.1.733</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>generic</mename>
+				<mevalue>6</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>specific</mename>
+				<mevalue>6</mevalue>
+			</maskelement>
+		</mask>
+		<uei>uei.opennms.org/traps/SMARTS-94-MIB/smTrapSeverityChange</uei>
+		<event-label>SMARTS-94-MIB defined trap event: smTrapSeverityChange</event-label>
+		<descr>A trap indicating a certainty change of severity certainty change notification.</descr>
+		<operinstruct>%parm[#7]%</operinstruct>				
+		<logmsg dest="logndisplay">smTrapSeverityChange trap received: %parm[#11]%</logmsg>
+		<severity>Normal</severity>
+	</event>
+
+	<event>
+		<mask>
+			<maskelement>
+				<mename>id</mename>
+				<mevalue>.1.3.6.1.4.1.733</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>generic</mename>
+				<mevalue>6</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>specific</mename>
+				<mevalue>98</mevalue>
+			</maskelement>
+		</mask>
+		<uei>uei.opennms.org/traps/SMARTS-94-MIB/smTrapNotificationChange</uei>
+		<event-label>SMARTS-94-MIB defined trap event: smTrapNotificationChange</event-label>
+		<descr>%parm[#7]%</descr>
+		<logmsg dest="logndisplay">smTrapNotificationChange trap received: %parm[#11]%</logmsg>
+		<descr>A trap describing a trap change notification.</descr>
+		<operinstruct>%parm[#7]%</operinstruct>		
+		<severity>Normal</severity>
+	</event>
+	<event>
+		<mask>
+			<maskelement>
+				<mename>id</mename>
+				<mevalue>.1.3.6.1.4.1.733</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>generic</mename>
+				<mevalue>6</mevalue>
+			</maskelement>
+			<maskelement>
+				<mename>specific</mename>
+				<mevalue>99</mevalue>
+			</maskelement>
+		</mask>
+		<uei>uei.opennms.org/traps/SMARTS-94-MIB/smTrapNotificationDelete</uei>
+		<event-label>SMARTS-94-MIB defined trap event: smTrapNotificationDelete</event-label>
+		<descr>A trap describing a trap delete notification.</descr>
+		<operinstruct>%parm[#7]%</operinstruct>		
+		<logmsg dest="logndisplay">smTrapNotificationDelete trap received: %parm[#11]%</logmsg>
+		<severity>Normal</severity>
+	</event>
+</events>

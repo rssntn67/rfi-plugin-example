@@ -1,0 +1,239 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.6626.6000.2.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+  		 <varbind>
+			<vbnumber>3</vbnumber>
+			<vbvalue>2</vbvalue>
+		 </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/TEKOTELECOM-OMC-MIB/omcActiveStateIndeterminate</uei>
+      <event-label>TEKOTELECOM-OMC-MIB defined trap event: omcActiveState</event-label>
+      <descr>This notification is sent when an Indeterminate alarm starts.</descr>
+      <operinstruct>%parm[#4]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#5]%</logmsg>
+      <severity>Indeterminate</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.6626.6000.2.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+  		 <varbind>
+			<vbnumber>3</vbnumber>
+			<vbvalue>3</vbvalue>
+		 </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/TEKOTELECOM-OMC-MIB/omcActiveStateCritical</uei>
+      <event-label>TEKOTELECOM-OMC-MIB defined trap event: omcActiveState</event-label>
+      <descr>This notification is sent when a Critical alarm starts.</descr>
+      <operinstruct>%parm[#4]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#5]%</logmsg>
+      <severity>Critical</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.6626.6000.2.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+  		 <varbind>
+			<vbnumber>3</vbnumber>
+			<vbvalue>4</vbvalue>
+		 </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/TEKOTELECOM-OMC-MIB/omcActiveStateMajor</uei>
+      <event-label>TEKOTELECOM-OMC-MIB defined trap event: omcActiveState</event-label>
+      <descr>This notification is sent when a Major alarm starts.</descr>
+      <operinstruct>%parm[#4]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#5]%</logmsg>
+      <severity>Major</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.6626.6000.2.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+  		 <varbind>
+			<vbnumber>3</vbnumber>
+			<vbvalue>5</vbvalue>
+		 </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/TEKOTELECOM-OMC-MIB/omcActiveStateMinor</uei>
+      <event-label>TEKOTELECOM-OMC-MIB defined trap event: omcActiveState</event-label>
+      <descr>This notification is sent when a Minor alarm starts.</descr>
+      <operinstruct>%parm[#4]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#5]%</logmsg>
+      <severity>Minor</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.6626.6000.2.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+  		 <varbind>
+			<vbnumber>3</vbnumber>
+			<vbvalue>6</vbvalue>
+		 </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/TEKOTELECOM-OMC-MIB/omcActiveStateWarning</uei>
+      <event-label>TEKOTELECOM-OMC-MIB defined trap event: omcActiveState</event-label>
+      <descr>This notification is sent when a Warning alarm starts.</descr>
+      <operinstruct>%parm[#4]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#5]%</logmsg>
+      <severity>Warning</severity>
+   </event>
+
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.6626.6000.2.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>2</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/traps/TEKOTELECOM-OMC-MIB/omcClearState</uei>
+      <event-label>TEKOTELECOM-OMC-MIB defined trap event: omcClearState</event-label>
+      <descr>This notification is sent when a clear alarm starts.</descr>
+      <logmsg dest="logndisplay">%parm[#6]%</logmsg>
+      <severity>Normal</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.6626.6000.2.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>3</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/traps/TEKOTELECOM-OMC-MIB/omcAlarmAck</uei>
+      <event-label>TEKOTELECOM-OMC-MIB defined trap event: omcAlarmAck</event-label>
+      <descr>This notification is sent when an ack alarm starts.</descr>
+      <logmsg dest="logndisplay">Alarm %parm[#1]% acked by %parm[#2]%.</logmsg>
+      <severity>Normal</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.6626.6000.2.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>4</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/traps/TEKOTELECOM-OMC-MIB/omcResyncStatusChange</uei>
+      <event-label>TEKOTELECOM-OMC-MIB defined trap event: omcResyncStatusChange</event-label>
+      <descr>This notification is sent every time an alarm resync operation starts or ends.</descr>
+      <operinstruct>omcResyncStatus: %parm[#1]%</operinstruct>
+      <logmsg dest="logndisplay">omcResyncStatusChange received.</logmsg>
+      <severity>Normal</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.6626.6000.2.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>5</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/traps/TEKOTELECOM-OMC-MIB/omcResync</uei>
+      <event-label>TEKOTELECOM-OMC-MIB defined trap event: omcResync</event-label>
+      <descr>A notification used to resync the NM.</descr>
+      <logmsg dest="logndisplay">%parm[#5]%</logmsg>
+      <severity>Normal</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.6626.6000.2.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/traps/TEKOTELECOM-OMC-MIB/omcHeartbeat</uei>
+      <event-label>TEKOTELECOM-OMC-MIB defined trap event: omcHeartbeat</event-label>
+      <descr>An heartbeat notification periodically sent by the OMC server.</descr>
+      <logmsg dest="logndisplay">omcHeartbeat trap received, omcHeartbeatCount=%parm[#1]%</logmsg>
+      <severity>Normal</severity>
+   </event>
+</events>

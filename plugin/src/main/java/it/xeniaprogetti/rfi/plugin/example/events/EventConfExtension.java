@@ -17,7 +17,15 @@ public class EventConfExtension implements org.opennms.integration.api.v1.config
             "AEM3-MIB.events.xml",
             "AEM3-MIB.translator.events.xml",
             "PBH-MIB-ALM.events.xml",
-            "PBH-MIB-ALM.translator.events.xml"
+            "PBH-MIB-ALM.translator.events.xml",
+            "SCAIR-MIB-ALM.events.xml",
+            "SCAIR-MIB-ALM.translator.events.xml",
+            "SCR-MIB-ALM.events.xml",
+            "SCR-MIB-ALM.translator.events.xml",
+            "SMARTS-94-MIB.events.xml",
+            "SMARTS-94-MIB.translator.events.xml",
+            "TEKOTELECOM-OMC-MIB.events.xml",
+            "TEKOTELECOM-OMC-MIB.translator.events.xml"
     );
 
     @Override

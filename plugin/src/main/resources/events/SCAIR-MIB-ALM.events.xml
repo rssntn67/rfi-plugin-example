@@ -1,0 +1,442 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~(SCAI|DFD)(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>1</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>0</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCAIR-MIB-ALARM/scairEventTrapAlarmIndeterminate</uei>
+      <event-label>SCAIR defined trap event: usEventTrap</event-label>
+	  <descr>Indeterminate Alarm device TRAP.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Indeterminate</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~(SCAI|DFD)(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>1</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>1</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCAIR-MIB-ALARM/scairEventTrapAlarmInformational</uei>
+      <event-label>SCAIR defined trap event: usEventTrap</event-label>
+	  <descr>Informational Alarm device TRAP.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Normal</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~(SCAI|DFD)(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>1</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>2</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCAIR-MIB-ALARM/scairEventTrapAlarmWarning</uei>
+      <event-label>SCAIR defined trap event: usEventTrap</event-label>
+	  <descr>Warning Alarm device TRAP.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Warning</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~(SCAI|DFD)(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>1</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>3</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCAIR-MIB-ALARM/scairEventTrapAlarmMinor</uei>
+      <event-label>SCAIR defined trap event: usEventTrap</event-label>
+	  <descr>Minor Alarm device TRAP.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Minor</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~(SCAI|DFD)(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>1</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>4</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCAIR-MIB-ALARM/scairEventTrapAlarmMajor</uei>
+      <event-label>SCAIR defined trap event: usEventTrap</event-label>
+	  <descr>Major Alarm device TRAP.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Major</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~(SCAI|DFD)(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>1</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>5</vbvalue>
+            <vbvalue>6</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCAIR-MIB-ALARM/scairEventTrapAlarmCritical</uei>
+      <event-label>SCAIR defined trap event: usEventTrap</event-label>
+	  <descr>Critical Alarm device TRAP.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Critical</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~(SCAI|DFD)(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>0</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCAIR-MIB-ALARM/scairEventTrapClear</uei>
+      <event-label>SCAIR defined trap event: usEventTrap</event-label>
+	  <descr>Clear Alarm device TRAP.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Normal</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~(SCAI|DFD)(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>2</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>0</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCAIR-MIB-ALARM/scairEventTrapNotificationIndeterminate</uei>
+      <event-label>SCAIR defined trap event: usEventTrap</event-label>
+	  <descr>Indeterminate Alarm device notification.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Indeterminate</severity>
+   </event>   
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~(SCAI|DFD)(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>2</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>1</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCAIR-MIB-ALARM/scairEventTrapNotificationInformational</uei>
+      <event-label>SCAIR defined trap event: usEventTrap</event-label>
+	  <descr>Informational Alarm device notification.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Normal</severity>
+   </event>   
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~(SCAI|DFD)(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>2</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>2</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCAIR-MIB-ALARM/scairEventTrapNotificationWarning</uei>
+      <event-label>SCAIR defined trap event: usEventTrap</event-label>
+	  <descr>Warning Alarm device notification.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Warning</severity>
+   </event>   
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~(SCAI|DFD)(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>2</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>3</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCAIR-MIB-ALARM/scairEventTrapNotificationMinor</uei>
+      <event-label>SCAIR defined trap event: usEventTrap</event-label>
+	  <descr>Minor Alarm device notification.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Minor</severity>
+   </event>   
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~(SCAI|DFD)(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>2</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>4</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCAIR-MIB-ALARM/scairEventTrapNotificationMajor</uei>
+      <event-label>SCAIR defined trap event: usEventTrap</event-label>
+	  <descr>Major Alarm device notification.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Major</severity>
+   </event>   
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~(SCAI|DFD)(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>2</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>5</vbvalue>
+            <vbvalue>6</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCAIR-MIB-ALARM/scairEventTrapNotificationCritical</uei>
+      <event-label>SCAIR defined trap event: usEventTrap</event-label>
+	  <descr>Critical Alarm device notification.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Critical</severity>
+   </event>   
+</events>

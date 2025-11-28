@@ -1,0 +1,62 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+
+	<event>
+		<uei>uei.opennms.org/translator/SMARTS-94-MIB/smTrapNotificationInformational</uei>
+		<event-label>SMARTS-MIB defined trap event: translated smTrapNotification informational</event-label>
+		<descr>A trap describing an Informational root cause notification.</descr>
+		<operinstruct>%parm[#7]%</operinstruct>		
+		<logmsg dest="logndisplay">%parm[#11]%</logmsg>
+		<severity>Normal</severity>
+		<alarm-data reduction-key="uei.opennms.org/translator/SMARTS-94-MIB/smTrapNotification:%nodeid%:%parm[#6]%:%parm[#5]%" alarm-type="1" auto-clean="true"/>
+	</event>
+
+	<event>
+		<uei>uei.opennms.org/translator/SMARTS-94-MIB/smTrapNotificationWarning</uei>
+		<event-label>SMARTS-MIB defined trap event: translated smTrapNotification warning</event-label>
+		<descr>A trap describing a Warning root cause notification.</descr>
+		<operinstruct>%parm[#7]%</operinstruct>		
+		<logmsg dest="logndisplay">%parm[#11]%</logmsg>
+		<severity>Warning</severity>
+		<alarm-data reduction-key="uei.opennms.org/translator/SMARTS-94-MIB/smTrapNotification:%nodeid%:%parm[#6]%:%parm[#5]%" alarm-type="1" auto-clean="true"/>
+	</event>
+
+	<event>
+		<uei>uei.opennms.org/translator/SMARTS-94-MIB/smTrapNotificationMinor</uei>
+		<event-label>SMARTS-MIB defined trap event: translated smTrapNotification minor</event-label>
+		<descr>A trap describing a Minor root cause notification.</descr>
+		<operinstruct>%parm[#7]%</operinstruct>		
+		<logmsg dest="logndisplay">%parm[#11]%</logmsg>
+		<severity>Minor</severity>
+		<alarm-data reduction-key="uei.opennms.org/translator/SMARTS-94-MIB/smTrapNotification:%nodeid%:%parm[#6]%:%parm[#5]%" alarm-type="1" auto-clean="true"/>
+	</event>
+
+	<event>
+		<uei>uei.opennms.org/translator/SMARTS-94-MIB/smTrapNotificationMajor</uei>
+		<event-label>SMARTS-MIB defined trap event: translated smTrapNotification major</event-label>
+		<descr>A trap describing a Major root cause notification.</descr>
+		<operinstruct>%parm[#7]%</operinstruct>		
+		<logmsg dest="logndisplay">%parm[#11]%</logmsg>
+		<severity>Major</severity>
+		<alarm-data reduction-key="uei.opennms.org/translator/SMARTS-94-MIB/smTrapNotification:%nodeid%:%parm[#6]%:%parm[#5]%" alarm-type="1" auto-clean="true"/>
+	</event>
+
+	<event>
+		<uei>uei.opennms.org/translator/SMARTS-94-MIB/smTrapNotificationCritical</uei>
+		<event-label>SMARTS-MIB defined trap event: translated smTrapNotification critical</event-label>
+		<descr>A trap describing a Critical root cause notification.</descr>
+		<operinstruct>%parm[#7]%</operinstruct>		
+		<logmsg dest="logndisplay">%parm[#11]%</logmsg>
+		<severity>Critical</severity>
+		<alarm-data reduction-key="uei.opennms.org/translator/SMARTS-94-MIB/smTrapNotification:%nodeid%:%parm[#6]%:%parm[#5]%" alarm-type="1" auto-clean="true"/>
+	</event>
+
+	<event>
+		<uei>uei.opennms.org/translator/SMARTS-94-MIB/smTrapNotificationClear</uei>
+		<event-label>SMARTS-MIB defined trap event: translated smTrapNotification clear</event-label>
+		<descr>A trap describing a clear root cause notification.</descr>
+		<logmsg dest="logndisplay">%parm[#11]%</logmsg>
+		<severity>Normal</severity>
+		<alarm-data reduction-key="%uei%:%nodeid%:%parm[#6]%:%parm[#5]%" alarm-type="2" auto-clean="true" clear-key="uei.opennms.org/translator/SMARTS-94-MIB/smTrapNotification:%nodeid%:%parm[#6]%:%parm[#5]%"/>
+	</event>
+
+</events>

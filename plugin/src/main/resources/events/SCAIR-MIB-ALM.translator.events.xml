@@ -1,0 +1,119 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+    <event>
+        <uei>uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapAlarmIndeterminate</uei>
+        <event-label>SCAIR defined translated event: scairEventTrapAlarmIndeterminate</event-label>
+        <descr>Indeterminate Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Indeterminate</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapAlarmInformational</uei>
+        <event-label>SCAIR defined translated event: scairEventTrapAlarmInformational</event-label>
+        <descr>Informational Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Normal</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapAlarmWarning</uei>
+        <event-label>SCAIR defined translated event: scairEventTrapAlarmWarning</event-label>
+        <descr>Warning Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Warning</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapAlarmMinor</uei>
+        <event-label>SCAIR defined translated event: scairEventTrapAlarmMinor</event-label>
+        <descr>Minor Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Minor</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapAlarmMajor</uei>
+        <event-label>SCAIR defined translated event: scairEventTrapAlarmMajor</event-label>
+        <descr>Major Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Major</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapAlarmCritical</uei>
+        <event-label>SCAIR defined translated event: scairEventTrapAlarmCritical</event-label>
+        <descr>Critical Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Critical</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+	<event>
+        <uei>uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapClear</uei>
+        <event-label>SCAIR defined translated event: scairEventTrapClear</event-label>
+        <descr>Clear Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Normal</severity>
+        <alarm-data reduction-key="%uei%:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="2" auto-clean="true" clear-key="uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapNotificationIndeterminate</uei>
+        <event-label>SCAIR defined translated event: scairEventTrapNotificationIndeterminate</event-label>
+        <descr>Indeterminate Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Indeterminate</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapNotification:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapNotificationInformational</uei>
+        <event-label>SCAIR defined translated event: scairEventTrapNotificationInformational</event-label>
+        <descr>Informational Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Normal</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapNotification:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapNotificationWarning</uei>
+        <event-label>SCAIR defined translated event: scairEventTrapNotificationWarning</event-label>
+        <descr>Warning Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Warning</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/PBH-MIB-ALARM/usEventNotificationAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapNotificationMinor</uei>
+        <event-label>SCAIR defined translated event: scairEventTrapNotificationMinor</event-label>
+        <descr>Minor Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Minor</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapNotification:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapNotificationMajor</uei>
+        <event-label>SCAIR defined translated event: usEventNotificationAlarmMajor</event-label>
+        <descr>Major Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Major</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapNotification:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapNotificationCritical</uei>
+        <event-label>SCAIR defined translated event: scairEventTrapNotificationCritical</event-label>
+        <descr>Critical Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Critical</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCAIR-MIB-ALARM/scairEventTrapNotification:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>	
+</events>

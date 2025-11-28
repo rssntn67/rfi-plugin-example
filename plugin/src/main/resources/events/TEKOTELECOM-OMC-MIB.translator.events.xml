@@ -1,0 +1,55 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+   <event>
+      <uei>uei.opennms.org/translator/TEKOTELECOM-OMC-MIB/omcActiveStateIndeterminate</uei>
+      <event-label>TEKOTELECOM-OMC-MIB defined trap event: omcActiveState</event-label>
+      <logmsg dest="logndisplay">%parm[#5]%</logmsg>
+      <descr>This notification is sent when an Indeterminate alarm starts.</descr>
+      <operinstruct>%parm[#4]%</operinstruct>	  
+      <severity>Indeterminate</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/TEKOTELECOM-OMC-MIB/omcActiveState:%parm[emNodeId]%:%parm[#1]%" alarm-type="1" auto-clean="true"/>
+   </event>
+   <event>
+      <uei>uei.opennms.org/translator/TEKOTELECOM-OMC-MIB/omcActiveStateCritical</uei>
+      <event-label>TEKOTELECOM-OMC-MIB defined trap event: omcActiveState</event-label>
+      <descr>This notification is sent when a Critical alarm starts.</descr>
+      <operinstruct>%parm[#4]%</operinstruct>	  
+      <logmsg dest="logndisplay">%parm[#5]%</logmsg>
+      <severity>Critical</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/TEKOTELECOM-OMC-MIB/omcActiveState:%parm[emNodeId]%:%parm[#1]%" alarm-type="1" auto-clean="true"/>
+   </event>
+   <event>
+      <uei>uei.opennms.org/translator/TEKOTELECOM-OMC-MIB/omcActiveStateMajor</uei>
+      <event-label>TEKOTELECOM-OMC-MIB defined trap event: omcActiveState</event-label>
+      <descr>This notification is sent when a Major alarm starts.</descr>
+      <operinstruct>%parm[#4]%</operinstruct>	  
+      <logmsg dest="logndisplay">%parm[#5]%</logmsg>
+      <severity>Major</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/TEKOTELECOM-OMC-MIB/omcActiveState:%parm[emNodeId]%:%parm[#1]%" alarm-type="1" auto-clean="true"/>
+   </event>
+   <event>
+      <uei>uei.opennms.org/translator/TEKOTELECOM-OMC-MIB/omcActiveStateMinor</uei>
+      <event-label>TEKOTELECOM-OMC-MIB defined trap event: omcActiveState</event-label>
+      <descr>This notification is sent when a Minor alarm starts.</descr>
+      <operinstruct>%parm[#4]%</operinstruct>	  
+      <logmsg dest="logndisplay">%parm[#5]%</logmsg>
+      <severity>Minor</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/TEKOTELECOM-OMC-MIB/omcActiveState:%parm[emNodeId]%:%parm[#1]%" alarm-type="1" auto-clean="true"/>
+   </event>
+   <event>
+      <uei>uei.opennms.org/translator/TEKOTELECOM-OMC-MIB/omcActiveStateWarning</uei>
+      <event-label>TEKOTELECOM-OMC-MIB defined trap event: omcActiveState</event-label>
+      <descr>This notification is sent when a Warning alarm starts.</descr>
+      <operinstruct>%parm[#4]%</operinstruct>	  
+      <logmsg dest="logndisplay">%parm[#5]%</logmsg>
+      <severity>Warning</severity>
+      <alarm-data reduction-key="uei.opennms.org/translator/TEKOTELECOM-OMC-MIB/omcActiveState:%parm[emNodeId]%:%parm[#1]%" alarm-type="1" auto-clean="true"/>
+   </event>
+   <event>
+      <uei>uei.opennms.org/translator/TEKOTELECOM-OMC-MIB/omcClearState</uei>
+      <event-label>TEKOTELECOM-OMC-MIB defined trap event: omcClearState</event-label>
+      <descr>This notification is sent when a clear alarm starts.</descr>
+      <logmsg dest="logndisplay">%parm[#6]%</logmsg>
+      <severity>Normal</severity>
+      <alarm-data reduction-key="%uei%:%nodeid%:%parm[#1]%" alarm-type="2" auto-clean="true" clear-key="uei.opennms.org/translator/TEKOTELECOM-OMC-MIB/omcActiveState:%nodeid%:%parm[#1]%"/>
+   </event>
+</events>

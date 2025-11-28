@@ -1,0 +1,119 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+    <event>
+        <uei>uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapAlarmIndeterminate</uei>
+        <event-label>SCR defined translated event: usEventTrapAlarmIndeterminate</event-label>
+        <descr>Indeterminate Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Indeterminate</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapAlarmInformational</uei>
+        <event-label>SCR defined translated event: usEventTrapAlarmInformational</event-label>
+        <descr>Informational Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Normal</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapAlarmWarning</uei>
+        <event-label>SCR defined translated event: usEventTrapAlarmWarning</event-label>
+        <descr>Warning Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Warning</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapAlarmMinor</uei>
+        <event-label>SCR defined translated event: usEventTrapAlarmMinor</event-label>
+        <descr>Minor Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Minor</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapAlarmMajor</uei>
+        <event-label>SCR defined translated event: usEventTrapAlarmMajor</event-label>
+        <descr>Major Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Major</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapAlarmCritical</uei>
+        <event-label>SCR defined translated event: usEventTrapAlarmCritical</event-label>
+        <descr>Critical Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Critical</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="1" auto-clean="true"/>
+    </event>
+	<event>
+        <uei>uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapClear</uei>
+        <event-label>SCR defined translated event: usEventTrapClear</event-label>
+        <descr>Clear Alarm device TRAP.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Normal</severity>
+        <alarm-data reduction-key="%uei%:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="2" auto-clean="true" clear-key="uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapNotificationIndeterminate</uei>
+        <event-label>SCR defined translated event: usEventTrapNotificationIndeterminate</event-label>
+        <descr>Indeterminate Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Indeterminate</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapNotification:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapNotificationInformational</uei>
+        <event-label>SCR defined translated event: usEventTrapNotificationInformational</event-label>
+        <descr>Informational Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Normal</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapNotification:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapNotificationWarning</uei>
+        <event-label>SCR defined translated event: usEventTrapNotificationWarning</event-label>
+        <descr>Warning Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Warning</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/US-MIB-ALARM/usEventNotificationAlarm:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapNotificationMinor</uei>
+        <event-label>SCR defined translated event: usEventTrapNotificationMinor</event-label>
+        <descr>Minor Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Minor</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapNotification:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapNotificationMajor</uei>
+        <event-label>SCR defined translated event: usEventNotificationAlarmMajor</event-label>
+        <descr>Major Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Major</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapNotification:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>
+    <event>
+        <uei>uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapNotificationCritical</uei>
+        <event-label>SCR defined translated event: usEventTrapNotificationCritical</event-label>
+        <descr>Critical Alarm device notification.</descr>
+        <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+        <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+        <severity>Critical</severity>
+        <alarm-data reduction-key="uei.opennms.org/translator/SCR-MIB-ALARM/scrEventTrapNotification:%parm[#1]%:%parm[#2]%:%parm[#3]%" alarm-type="3" auto-clean="true"/>
+    </event>	
+</events>

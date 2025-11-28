@@ -1,0 +1,441 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>1</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>0</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCR-MIB-ALARM/scrEventTrapAlarmIndeterminate</uei>
+      <event-label>SCR defined trap event: usEventTrap</event-label>
+	  <descr>Indeterminate Alarm device TRAP.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Indeterminate</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~SCR-(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>1</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>1</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCR-MIB-ALARM/scrEventTrapAlarmInformational</uei>
+      <event-label>SCR defined trap event: usEventTrap</event-label>
+	  <descr>Informational Alarm device TRAP.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Normal</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~SCR-(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>1</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>2</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCR-MIB-ALARM/scrEventTrapAlarmWarning</uei>
+      <event-label>SCR defined trap event: usEventTrap</event-label>
+	  <descr>Warning Alarm device TRAP.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Warning</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~SCR-(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>1</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>3</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCR-MIB-ALARM/scrEventTrapAlarmMinor</uei>
+      <event-label>SCR defined trap event: usEventTrap</event-label>
+	  <descr>Minor Alarm device TRAP.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Minor</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~SCR-(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>1</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>4</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCR-MIB-ALARM/scrEventTrapAlarmMajor</uei>
+      <event-label>SCR defined trap event: usEventTrap</event-label>
+	  <descr>Major Alarm device TRAP.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Major</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~SCR-(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>1</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>5</vbvalue>
+            <vbvalue>6</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCR-MIB-ALARM/scrEventTrapAlarmCritical</uei>
+      <event-label>SCR defined trap event: usEventTrap</event-label>
+	  <descr>Critical Alarm device TRAP.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Critical</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~SCR-(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>0</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCR-MIB-ALARM/scrEventTrapClear</uei>
+      <event-label>SCR defined trap event: usEventTrap</event-label>
+	  <descr>Clear Alarm device TRAP.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Normal</severity>
+   </event>
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~SCR-(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>2</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>0</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCR-MIB-ALARM/scrEventTrapNotificationIndeterminate</uei>
+      <event-label>SCR defined trap event: usEventTrap</event-label>
+	  <descr>Indeterminate Alarm device notification.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Indeterminate</severity>
+   </event>   
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~SCR-(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>2</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>1</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCR-MIB-ALARM/scrEventTrapNotificationInformational</uei>
+      <event-label>SCR defined trap event: usEventTrap</event-label>
+	  <descr>Informational Alarm device notification.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Normal</severity>
+   </event>   
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~SCR-(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>2</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>2</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCR-MIB-ALARM/scrEventTrapNotificationWarning</uei>
+      <event-label>SCR defined trap event: usEventTrap</event-label>
+	  <descr>Warning Alarm device notification.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Warning</severity>
+   </event>   
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~SCR-(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>2</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>3</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCR-MIB-ALARM/scrEventTrapNotificationMinor</uei>
+      <event-label>SCR defined trap event: usEventTrap</event-label>
+	  <descr>Minor Alarm device notification.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Minor</severity>
+   </event>   
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~SCR-(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>2</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>4</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCR-MIB-ALARM/scrEventTrapNotificationMajor</uei>
+      <event-label>SCR defined trap event: usEventTrap</event-label>
+	  <descr>Major Alarm device notification.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Major</severity>
+   </event>   
+   <event>
+      <mask>
+         <maskelement>
+            <mename>id</mename>
+            <mevalue>.1.3.6.1.4.1.46302.109.0.1</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>generic</mename>
+            <mevalue>6</mevalue>
+         </maskelement>
+         <maskelement>
+            <mename>specific</mename>
+            <mevalue>1</mevalue>
+         </maskelement>
+         <varbind>
+            <vbnumber>1</vbnumber>
+            <vbvalue>~SCR-(.*$)</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>6</vbnumber>
+            <vbvalue>2</vbvalue>
+         </varbind>
+         <varbind>
+            <vbnumber>7</vbnumber>
+            <vbvalue>5</vbvalue>
+            <vbvalue>6</vbvalue>
+         </varbind>
+      </mask>
+      <uei>uei.opennms.org/traps/SCR-MIB-ALARM/scrEventTrapNotificationCritical</uei>
+      <event-label>SCR defined trap event: usEventTrap</event-label>
+	  <descr>Critical Alarm device notification.</descr>
+      <operinstruct>Event System: %parm[#1]%, Event Device: %parm[#2]%, Event Code: %parm[#3]%</operinstruct>
+      <logmsg dest="logndisplay">%parm[#10]%</logmsg>
+      <severity>Critical</severity>
+   </event>   
+</events>
