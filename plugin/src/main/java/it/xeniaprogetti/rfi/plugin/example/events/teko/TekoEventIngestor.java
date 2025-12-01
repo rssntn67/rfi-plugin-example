@@ -114,6 +114,7 @@ public class TekoEventIngestor implements EventListener {
 
         String uei = e.getUei().replace("/traps/", "/translator/");
 
+        log.debug("active event parameter: {}", e.getParameters());
         Node node = getNode(e);
         int nodeId = node == null ? e.getNodeId() : node.getId();
 
@@ -146,6 +147,8 @@ public class TekoEventIngestor implements EventListener {
 
         String uei = e.getUei().replace("/traps/", "/translator/");
 
+        log.debug("clear event parameter: {}", e.getParameters());
+
         ImmutableInMemoryEvent.Builder builder = ImmutableInMemoryEvent.newBuilderFrom(e)
                 .setNodeId(e.getNodeId()) //????
                 .setUei(uei)
@@ -172,29 +175,97 @@ public class TekoEventIngestor implements EventListener {
     }
 
     private Node getNode(InMemoryEvent e) {
+
         Node node;
         String foreignId = getParam(e, OID_TEKO_FOREIGNID);
-        if(foreignId != null){
+
+        if(foreignId == null){
+            log.debug("foreingId is null into event.");
+            return null;
+        } else {
+            log.debug("foreingId: {}", foreignId);
+            node = nodeDao.getNodeByLabel(foreignId);
+            if(node != null){
+                log.debug("node with foreigniId: {} found!", foreignId);
+                return node;
+            } else{
+                log.debug("node with foreigniId: {} not found!", foreignId);
+
+                String tf = getParam(e, OID_TEKO_TF);
+                String path = getParam(e, OID_TEKO_PATH);
+
+                if(tf == null || path == null){
+                    log.debug("'tf' or 'path' is null into event.");
+                    return null;
+                }else{
+                    log.debug("path: {} - tf: {}", path, tf);
+                    if("tf".equalsIgnoreCase(tf)){
+                        log.debug("parameter .2.1.1.1.9 == tf");
+                        log.debug("checking if node with nodelabel == group 2 of regex is present ...");
+                        String label1 = matchRegex(path, REGEX_TEKO, 2);
+                        node = nodeDao.getNodeByLabel(label1);
+                        if(node != null){
+                            log.debug("node: {} found!", node);
+                            return node;
+                        }else{
+                            log.debug("node not found ...");
+                            log.debug("checking if node with nodelabel == group 1 of regex is present ...");
+                            String label2 = matchRegex(path, REGEX_TEKO, 1);
+                            node = nodeDao.getNodeByLabel(label2);
+
+                            if(node != null){
+                                log.debug("node found {}", node);
+                            }else{
+                                log.debug("node not found!");
+                            }
+                            return node;
+                        }
+                    }else{
+                        log.debug("parameter .2.1.1.1.9 != tf");
+                        log.debug("checking if node with nodelabel == group 1 of short regex is present ...");
+                        String labelShort = matchRegex(path, REGEX_SHORT_TEKO, 1);
+                        node = nodeDao.getNodeByLabel(labelShort);
+                        if(node != null){
+                            log.debug("node: {} found!", node);
+                        }else{
+                            log.debug("node not found!");
+                        }
+                        return node;
+                    }
+                }
+            }
+        }
+
+        /*if(foreignId != null){
+            log.debug("foreing id {}", foreignId);
             node = nodeDao.getNodeByLabel(foreignId);
         } else{
+            log.debug("foreing id null into trap");
             String tf = getParam(e, OID_TEKO_TF);
             String path = getParam(e, OID_TEKO_PATH);
+
+            log.debug("path: {} - tf: {}", path, tf);
 
             if(tf.equalsIgnoreCase("tf")){
                 String label1 = matchRegex(path, REGEX_TEKO, 2);
 
+                log.debug("value group 2 regex: {}", label1);
+
                 if(label1 != null){
                     node = nodeDao.getNodeByLabel(label1);
                 }else{
+
                     String label2 = matchRegex(path, REGEX_TEKO, 1);
+
+                    log.debug("value group 2 is null ... value group 1 regex: {}", label2);
                     node = nodeDao.getNodeByLabel(label2);
                 }
             }else{
                 String labelShort = matchRegex(path, REGEX_SHORT_TEKO, 1);
+                log.debug("parameter .9 != tf, value group 1 short regex: {}", labelShort);
                 node = nodeDao.getNodeByLabel(labelShort);
             }
-        }
-        return node;
+        }*/
     }
 
     private String getParam(InMemoryEvent e, String oid) {
