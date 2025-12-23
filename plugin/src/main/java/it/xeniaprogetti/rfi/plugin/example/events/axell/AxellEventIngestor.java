@@ -34,7 +34,7 @@ public class AxellEventIngestor implements EventListener {
     private static final String NODE_LABEL_AXELL_PARAMETER_MATCH = ".1.3.6.1.4.1.8829.100.1.2.6";
     protected static final String TIME_AXELL_PARAMETER = ".1.3.6.1.4.1.8829.100.1.2.4"; //AEMUniqueRef
     protected static final DateTimeFormatter TRAP_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-    protected static final List<String> INTERESTING_AXELL_UEIS = Arrays.asList(
+    public static final List<String> INTERESTING_AXELL_UEIS = Arrays.asList(
             UEI_AXELL_PREFIX + "/aemAlarmNotificationIndeterminate",
             UEI_AXELL_PREFIX + "/aemAlarmNotificationCritical",
             UEI_AXELL_PREFIX + "/aemAlarmNotificationMajor",

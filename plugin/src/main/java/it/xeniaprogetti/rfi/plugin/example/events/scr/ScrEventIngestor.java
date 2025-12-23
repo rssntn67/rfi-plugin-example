@@ -34,7 +34,7 @@ public class ScrEventIngestor implements EventListener {
     private static final String NODE_LABEL_SCR_PARAMETER_MATCH = ".1.3.6.1.4.1.46302.109.1.2";
     protected static final String TIME_SCR_PARAMETER = ".1.3.6.1.4.1.46302.109.1.9"; //AEMUniqueRef
     protected static final DateTimeFormatter TRAP_TIME_FORMATTER = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
-    protected static final List<String> INTERESTING_SCR_UEIS = Arrays.asList(
+    public static final List<String> INTERESTING_SCR_UEIS = Arrays.asList(
             UEI_SCR_PREFIX + "/scairEventTrapAlarmIndeterminate",
             UEI_SCR_PREFIX + "/scairEventTrapAlarmInformational",
             UEI_SCR_PREFIX + "/scairEventTrapAlarmWarning",

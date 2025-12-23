@@ -40,7 +40,7 @@ public class TekoEventIngestor implements EventListener {
     protected static final String REGEX_TEKO = "/([^/]*)/([^/]*)/(.*)$";
     protected static final String REGEX_SHORT_TEKO = "/([^/]*)/(.*)$";
     protected static final String CLEAR_UEI_TEKO = UEI_TEKO_PREFIX + "/omcClearState";
-    protected static final List<String> INTERESTING_TEKO_UEIS = Arrays.asList(
+    public static final List<String> INTERESTING_TEKO_UEIS = Arrays.asList(
             UEI_TEKO_PREFIX + "/omcActiveStateIndeterminate",
             UEI_TEKO_PREFIX + "/omcActiveStateCritical",
             UEI_TEKO_PREFIX + "/omcActiveStateMajor",

@@ -30,7 +30,7 @@ public class Smarts94EventIngestor implements EventListener {
     private static final String NODE_LABEL_SMARTS94_PARAMETER_MATCH = ".1.3.6.1.4.1.733.2.1.10";
     protected static final String TIME_SMARTS94_PARAMETER = ".1.3.6.1.4.1.733.2.1.1"; //AEMUniqueRef
     //protected static final DateTimeFormatter TRAP_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    protected static final List<String> INTERESTING_SMARTS94_UEIS = Arrays.asList(
+    public static final List<String> INTERESTING_SMARTS94_UEIS = Arrays.asList(
             UEI_SMARTS94_PREFIX + "/smTrapNotificationInformational",
             UEI_SMARTS94_PREFIX + "/smTrapNotificationWarning",
             UEI_SMARTS94_PREFIX + "/smTrapNotificationMinor",

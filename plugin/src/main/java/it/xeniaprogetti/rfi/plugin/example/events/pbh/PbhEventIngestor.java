@@ -37,7 +37,7 @@ public class PbhEventIngestor implements EventListener {
     /*protected static final DateTimeFormatter TRAP_TIME_FORMATTER = new DateTimeFormatterBuilder().parseCaseInsensitive()
                     .appendPattern("EEE MMM dd HH:mm:ss z yyyy")
                     .toFormatter(Locale.ENGLISH);*/
-    protected static final List<String> INTERESTING_PBH_UEIS = Arrays.asList(
+    public static final List<String> INTERESTING_PBH_UEIS = Arrays.asList(
             UEI_PBH_PREFIX + "/pbhEventTrapAlarmIndeterminate",
             UEI_PBH_PREFIX + "/pbhEventTrapAlarmInformational",
             UEI_PBH_PREFIX + "/pbhEventTrapAlarmWarning",

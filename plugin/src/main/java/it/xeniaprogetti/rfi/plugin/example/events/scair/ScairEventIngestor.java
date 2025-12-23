@@ -34,7 +34,7 @@ public class ScairEventIngestor implements EventListener {
     private static final String NODE_LABEL_SCAIR_PARAMETER_MATCH = ".1.3.6.1.4.1.46302.109.1.2";
     protected static final String TIME_SCAIR_PARAMETER = ".1.3.6.1.4.1.46302.109.1.9"; //AEMUniqueRef
     protected static final DateTimeFormatter TRAP_TIME_FORMATTER = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
-    protected static final List<String> INTERESTING_SCAIR_UEIS = Arrays.asList(
+    public static final List<String> INTERESTING_SCAIR_UEIS = Arrays.asList(
             UEI_SCAIR_PREFIX + "/scairEventTrapAlarmIndeterminate",
             UEI_SCAIR_PREFIX + "/scairEventTrapAlarmInformational",
             UEI_SCAIR_PREFIX + "/scairEventTrapAlarmWarning",

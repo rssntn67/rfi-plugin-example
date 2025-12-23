@@ -37,6 +37,8 @@ public class AlarmForwarder implements AlarmLifecycleListener {
 
     @Override
     public void handleNewOrUpdatedAlarm(Alarm alarm) {
+
+        LOG.info("handleNewOrUpdatedAlarm: {}", alarm);
         if (alarm.getReductionKey().startsWith(UEI_PREFIX)) {
             // Never forward alarms that the plugin itself creates
             return;
@@ -78,11 +80,13 @@ public class AlarmForwarder implements AlarmLifecycleListener {
     @Override
     public void handleAlarmSnapshot(List<Alarm> alarms) {
         // pass
+        LOG.info("handleAlarmSnapshot: {}", alarms);
     }
 
     @Override
     public void handleDeletedAlarm(int alarmId, String reductionKey) {
         // pass
+        LOG.info("handleDeletedAlarm: {} - {}", alarmId, reductionKey);
     }
 
     public static Alert toAlert(Alarm alarm) {

@@ -33,7 +33,7 @@ public class AComEventIngestorComponent implements EventListener {
     private static final String NODE_LABEL_ACOM_PARAMETER_MATCH = ".1.3.6.1.4.1.231.7.99.4.2.1.1.11";
     protected static final String TIME_ACOM_PARAMETER = ".1.3.6.1.4.1.231.7.99.4.2.1.1.1"; //tiAlarmDateTime
     protected static final DateTimeFormatter TRAP_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyyMMddHHmmssZ");
-    protected static final List<String> INTERESTING_ACOM_UEIS = Arrays.asList(
+    public static final List<String> INTERESTING_ACOM_UEIS = Arrays.asList(
             UEI_ACOM_PREFIX + "/tiIncTrapCleared",
             UEI_ACOM_PREFIX + "/tiIncTrapNormal",
             UEI_ACOM_PREFIX + "/tiIncTrapWarning",
