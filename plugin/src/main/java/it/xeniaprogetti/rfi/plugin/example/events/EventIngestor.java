@@ -23,8 +23,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Component(name = "allEventIngestor",
-        immediate = true)
+//@Component(name = "allEventIngestor",
+//        immediate = true)
 public class EventIngestor implements EventListener {
 
     private static final Logger log = LoggerFactory.getLogger(EventIngestor.class);
