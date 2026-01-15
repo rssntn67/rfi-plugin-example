@@ -1,15 +1,11 @@
 package it.xeniaprogetti.rfi.plugin.example.provisioning.pbh;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import it.xeniaprogetti.rfi.plugin.example.provisioning.Request;
-import it.xeniaprogetti.rfi.plugin.example.provisioning.RequestContext;
-import org.opennms.integration.api.v1.config.requisition.Requisition;
+import it.xeniaprogetti.rfi.plugin.example.provisioning.AbstractRequisitionProvider;
+//import org.apache.commons.csv.CSVRecord;
 import org.opennms.integration.api.v1.config.requisition.RequisitionNode;
-import org.opennms.integration.api.v1.config.requisition.immutables.ImmutableRequisition;
 import org.opennms.integration.api.v1.config.requisition.immutables.ImmutableRequisitionMetaData;
 import org.opennms.integration.api.v1.config.requisition.immutables.ImmutableRequisitionNode;
 import org.opennms.integration.api.v1.requisition.RequisitionProvider;
-import org.opennms.integration.api.v1.requisition.RequisitionRequest;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
@@ -23,27 +19,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 @Component(name = "pbhRequisitionProvider",
-        immediate = true)
-public class PBHRequisitionProvider implements RequisitionProvider {
+        immediate = true,
+        property = { "type=PBH" },
+        service = RequisitionProvider.class)
+public class PBHRequisitionProvider extends AbstractRequisitionProvider<PBHNode> /*implements RequisitionProvider*/ {
 
     private static final Logger LOG = LoggerFactory.getLogger(PBHRequisitionProvider.class);
     private final static String TYPE = "PBH";
-    private final static String PARAMETER_PATH = "path";
-
-    //private NodeDao nodeDao;
 
     public PBHRequisitionProvider() {
 
     }
-
-    /*@Reference
-    public void setNodeDao(NodeDao nodeDao) {
-        this.nodeDao = nodeDao;
-    }*/
 
     @Activate
     public void activate() {
@@ -56,56 +44,7 @@ public class PBHRequisitionProvider implements RequisitionProvider {
     }
 
     @Override
-    public RequisitionRequest getRequest(Map<String, String> parameters) {
-        final var path = Objects.requireNonNull(parameters.get(PARAMETER_PATH), "Missing requisition parameter: path");
-        return new Request(path);
-    }
-
-    @Override
-    public Requisition getRequisition(RequisitionRequest requisitionRequest) {
-        final var request = (Request) requisitionRequest;
-        return this.handleRequest(new RequestContext(request));
-    }
-
-    @Override
-    public byte[] marshalRequest(RequisitionRequest request) {
-        //return new byte[0];
-        final var mapper = new ObjectMapper();
-        try {
-            return mapper.writeValueAsBytes(request);
-        } catch (final IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public RequisitionRequest unmarshalRequest(byte[] bytes) {
-        //return null;
-        final var mapper = new ObjectMapper();
-        try {
-            return mapper.readValue(bytes, RequisitionRequest.class);
-        } catch (final IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private Requisition handleRequest(final RequestContext context) {
-
-        LOG.info("start handle request to read file and add PBH nodes");
-
-        final var requisition = ImmutableRequisition.newBuilder()
-                .setForeignSource(TYPE);
-
-        List<PBHNode> pbhNodeList = readFile(context.getPath());
-        for (PBHNode pbhNode : pbhNodeList) {
-            LOG.debug("Add PBH node in requisition: {}", pbhNode);
-            requisition.addNode(getNodeFromEntry(pbhNode, context));
-        }
-
-        return requisition.build();
-    }
-
-    private List<PBHNode> readFile(String csvPath) {
+    protected List<PBHNode> readFile(String csvPath) {
         LOG.info("start read PBH file from path: {}", csvPath);
         List<PBHNode> pbhNodeList = new ArrayList<>();
 
@@ -138,12 +77,14 @@ public class PBHRequisitionProvider implements RequisitionProvider {
                     continue;
                 }
 
-                // split sul separatore ";"
-                String[] parts = line.split(";", -1);
-                if (parts.length < 9) {
-                    LOG.warn("Skipping invalid line: {}", line);
+                // split sul separatore ";" tenendo conto delle virgolette
+                String[] parts = parseCsvLineWithQuotes(line);
+
+                if (parts.length != 9) {
+                    LOG.warn("Skipping invalid pbh entry (expected 9 columns, got {}): {}", parts.length, line);
                     continue;
                 }
+
 
                 String dtp = parts[0].trim();
                 String nomeImpianto = parts[1].trim();
@@ -167,7 +108,37 @@ public class PBHRequisitionProvider implements RequisitionProvider {
         return pbhNodeList;
     }
 
-    private RequisitionNode getNodeFromEntry(PBHNode pbhNode, RequestContext context){
+    /*@Override
+    protected List<PBHNode> readFile(String csvPath) {
+
+        LOG.info("start read PBH file from path: {}", csvPath);
+
+        List<PBHNode> list = new ArrayList<>();
+
+        for (CSVRecord r : readCsv(csvPath)) {
+
+            String dtp           = r.get(0);
+            String nomeImpianto  = r.get(1);
+            String tipoImpianto  = r.get(2);
+            String matricola     = r.get(3);
+            String sedeImpianto  = r.get(4);
+            String comune        = r.get(5);
+            String provincia     = r.get(6);
+            String iccid         = r.get(7);
+            String msisdn        = r.get(8);
+
+            list.add(new PBHNode(
+                    dtp, nomeImpianto, tipoImpianto,
+                    matricola, sedeImpianto, comune,
+                    provincia, iccid, msisdn
+            ));
+        }
+
+        return list;
+    }*/
+
+    @Override
+    protected RequisitionNode getNodeFromEntry(PBHNode pbhNode){
 
         String nomeSito = pbhNode.getComune() + " - " + pbhNode.getProvincia();
 
@@ -190,11 +161,11 @@ public class PBHRequisitionProvider implements RequisitionProvider {
                         .setKey("Foreign Source")
                         .setValue(TYPE)
                         .build())
-                /*.addMetaData(ImmutableRequisitionMetaData.newBuilder()
+                .addMetaData(ImmutableRequisitionMetaData.newBuilder()
                         .setContext(TYPE)
                         .setKey("Parent Foreign ID")
                         .setValue("PBHOC")
-                        .build())*/
+                        .build())
                 .addMetaData(ImmutableRequisitionMetaData.newBuilder()
                         .setContext(TYPE)
                         .setKey("Tipo Apparato")
@@ -245,4 +216,7 @@ public class PBHRequisitionProvider implements RequisitionProvider {
         LOG.info("Requisition node created: {}", requisitionNode);
         return requisitionNode;
     }
+
+
+
 }

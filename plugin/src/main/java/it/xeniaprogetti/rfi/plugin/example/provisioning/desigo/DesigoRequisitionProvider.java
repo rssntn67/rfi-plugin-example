@@ -1,15 +1,11 @@
 package it.xeniaprogetti.rfi.plugin.example.provisioning.desigo;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import it.xeniaprogetti.rfi.plugin.example.provisioning.Request;
-import it.xeniaprogetti.rfi.plugin.example.provisioning.RequestContext;
-import org.opennms.integration.api.v1.config.requisition.Requisition;
+import it.xeniaprogetti.rfi.plugin.example.provisioning.AbstractRequisitionProvider;
+//import org.apache.commons.csv.CSVRecord;
 import org.opennms.integration.api.v1.config.requisition.RequisitionNode;
-import org.opennms.integration.api.v1.config.requisition.immutables.ImmutableRequisition;
 import org.opennms.integration.api.v1.config.requisition.immutables.ImmutableRequisitionMetaData;
 import org.opennms.integration.api.v1.config.requisition.immutables.ImmutableRequisitionNode;
 import org.opennms.integration.api.v1.requisition.RequisitionProvider;
-import org.opennms.integration.api.v1.requisition.RequisitionRequest;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
@@ -23,28 +19,18 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 @Component(name = "desigoRequisitionProvider",
-        immediate = true)
-public class DesigoRequisitionProvider implements RequisitionProvider {
+        immediate = true,
+        property = { "type=SPvA" },
+        service = RequisitionProvider.class)
+public class DesigoRequisitionProvider extends AbstractRequisitionProvider<DesigoNode> /*implements RequisitionProvider*/ {
 
     private static final Logger LOG = LoggerFactory.getLogger(DesigoRequisitionProvider.class);
     private final static String TYPE = "SPvA";
-    private final static String PARAMETER_PATH = "path";
-    //private static final String METADATA_CONTEXT = "requisition";
-
-    //private NodeDao nodeDao;
 
     public DesigoRequisitionProvider(){
-
     }
-
-    /*@Reference
-    public void setNodeDao(NodeDao nodeDao) {
-        this.nodeDao = nodeDao;
-    }*/
 
     @Activate
     public void activate() {
@@ -57,58 +43,7 @@ public class DesigoRequisitionProvider implements RequisitionProvider {
     }
 
     @Override
-    public RequisitionRequest getRequest(Map<String, String> parameters) {
-        final var path = Objects.requireNonNull(parameters.get(PARAMETER_PATH), "Missing requisition parameter: path");
-        return new Request(path);
-    }
-
-    @Override
-    public Requisition getRequisition(RequisitionRequest requisitionRequest) {
-        final var request = (Request) requisitionRequest;
-        return this.handleRequest(new RequestContext(request));
-    }
-
-    @Override
-    public byte[] marshalRequest(RequisitionRequest request) {
-        //return new byte[0];
-        final var mapper = new ObjectMapper();
-        try {
-            return mapper.writeValueAsBytes(request);
-        } catch (final IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public RequisitionRequest unmarshalRequest(byte[] bytes) {
-        //return null;
-        final var mapper = new ObjectMapper();
-        try {
-            return mapper.readValue(bytes, RequisitionRequest.class);
-        } catch (final IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private Requisition handleRequest(final RequestContext context){
-
-        LOG.info("start handle request to read file and add Desigo nodes");
-
-        final var requisition = ImmutableRequisition.newBuilder()
-                .setForeignSource(TYPE);
-
-        //leggi il file dal path e crea lista di nodi da scorrere per creare RequisitionNode
-        List<DesigoNode> desigoNodeList = readFile(context.getPath());
-
-        for(DesigoNode desigoNode: desigoNodeList){
-            LOG.debug("Add desigo node in requisition: {}", desigoNode);
-            requisition.addNode(getNodeFromEntry(desigoNode, context));
-        }
-
-        return requisition.build();
-    }
-
-    private List<DesigoNode> readFile(String csvPath) {
+    protected List<DesigoNode> readFile(String csvPath) {
         LOG.info("start read Desigo file from path: {}", csvPath);
         List<DesigoNode> desigoNodeList = new ArrayList<>();
 
@@ -141,10 +76,10 @@ public class DesigoRequisitionProvider implements RequisitionProvider {
                     continue;
                 }
 
-                // split sul separatore ";"
-                String[] parts = line.split(";", -1);
-                if (parts.length < 2) {
-                    LOG.warn("Skipping invalid line: {}", line);
+                String[] parts = parseCsvLineWithQuotes(line);
+
+                if (parts.length != 2) {
+                    LOG.warn("Skipping invalid desigo entry (expected 2 columns, got {}): {}", parts.length, line);
                     continue;
                 }
 
@@ -162,12 +97,29 @@ public class DesigoRequisitionProvider implements RequisitionProvider {
         return desigoNodeList;
     }
 
+    /*@Override
+    protected List<DesigoNode> readFile(String csvPath) {
 
-    private RequisitionNode getNodeFromEntry(DesigoNode desigoNode, RequestContext context){
+        LOG.info("start read PBH file from path: {}", csvPath);
 
+        List<DesigoNode> list = new ArrayList<>();
+
+        for (CSVRecord r : readCsv(csvPath)) {
+
+            String code = r.get(0);
+            String name = r.get(1);
+
+            list.add(new DesigoNode(code, name));
+        }
+
+        return list;
+    }*/
+
+    @Override
+    protected RequisitionNode getNodeFromEntry(DesigoNode node) {
         ImmutableRequisitionNode.Builder builder = ImmutableRequisitionNode.newBuilder()
-                .setNodeLabel(desigoNode.getCode())
-                .setForeignId(desigoNode.getCode())
+                .setNodeLabel(node.getCode())
+                .setForeignId(node.getCode())
                 .addCategory(TYPE)
                 .addMetaData(ImmutableRequisitionMetaData.newBuilder()
                         .setContext(TYPE)
@@ -184,49 +136,24 @@ public class DesigoRequisitionProvider implements RequisitionProvider {
                         .setKey("Foreign Source")
                         .setValue("SPvA")
                         .build())
-                /*.addMetaData(ImmutableRequisitionMetaData.newBuilder()
+                .addMetaData(ImmutableRequisitionMetaData.newBuilder()
                         .setContext(TYPE)
                         .setKey("ParentForeignID")
                         .setValue("SERVER_DESIGO")
-                        .build())*/
+                        .build())
                 .addMetaData(ImmutableRequisitionMetaData.newBuilder()
                         .setContext(TYPE)
                         .setKey("Codice Apparato")
-                        .setValue(desigoNode.getCode())
+                        .setValue(node.getCode())
                         .build())
                 .addMetaData(ImmutableRequisitionMetaData.newBuilder()
                         .setContext(TYPE)
                         .setKey("Nome Apparato")
-                        .setValue(desigoNode.getName())
+                        .setValue(node.getName())
                         .build());
 
         ImmutableRequisitionNode requisitionNode = builder.build();
         LOG.info("Requisition node created: {}", requisitionNode);
         return requisitionNode;
     }
-
-    /*public static class Request implements RequisitionRequest {
-
-        private String path;
-
-        public Request(String path) {
-            this.path = Objects.requireNonNull(path);
-        }
-    }
-
-    public static class RequestContext {
-        private final Request request;
-
-        public RequestContext(final Request request) {
-            this.request = Objects.requireNonNull(request);
-        }
-
-        public Request getRequest() {
-            return this.request;
-        }
-
-        public String getPath() {
-            return this.request.path;
-        }
-    }*/
 }
