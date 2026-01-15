@@ -25,7 +25,8 @@ public class EventConfExtension implements org.opennms.integration.api.v1.config
             "SMARTS-94-MIB.events.xml",
             "SMARTS-94-MIB.translator.events.xml",
             "TEKOTELECOM-OMC-MIB.events.xml",
-            "TEKOTELECOM-OMC-MIB.translator.events.xml"
+            "TEKOTELECOM-OMC-MIB.translator.events.xml",
+            "NSN-SNMP-NBI-TOPOLOGY-MIB.events.xml"
     );
 
     @Override
