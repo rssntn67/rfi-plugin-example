@@ -1,7 +1,7 @@
 package it.xeniaprogetti.rfi.plugin.example.provisioning.pbh;
 
 import it.xeniaprogetti.rfi.plugin.example.provisioning.AbstractRequisitionProvider;
-//import org.apache.commons.csv.CSVRecord;
+import org.apache.commons.csv.CSVRecord;
 import org.opennms.integration.api.v1.config.requisition.RequisitionNode;
 import org.opennms.integration.api.v1.config.requisition.immutables.ImmutableRequisitionMetaData;
 import org.opennms.integration.api.v1.config.requisition.immutables.ImmutableRequisitionNode;
@@ -43,7 +43,7 @@ public class PBHRequisitionProvider extends AbstractRequisitionProvider<PBHNode>
         return TYPE;
     }
 
-    @Override
+    /*@Override
     protected List<PBHNode> readFile(String csvPath) {
         LOG.info("start read PBH file from path: {}", csvPath);
         List<PBHNode> pbhNodeList = new ArrayList<>();
@@ -106,9 +106,9 @@ public class PBHRequisitionProvider extends AbstractRequisitionProvider<PBHNode>
         }
 
         return pbhNodeList;
-    }
+    }*/
 
-    /*@Override
+    @Override
     protected List<PBHNode> readFile(String csvPath) {
 
         LOG.info("start read PBH file from path: {}", csvPath);
@@ -135,7 +135,7 @@ public class PBHRequisitionProvider extends AbstractRequisitionProvider<PBHNode>
         }
 
         return list;
-    }*/
+    }
 
     @Override
     protected RequisitionNode getNodeFromEntry(PBHNode pbhNode){

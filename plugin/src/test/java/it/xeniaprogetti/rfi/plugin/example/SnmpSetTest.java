@@ -32,6 +32,7 @@ public class SnmpSetTest {
                     .withAddress("udp:192.168.1.1/161")
                     .withCommunity("private")
                     .withVersion(1)
+                    .withIpAddr("192.168.1.1")
                     .build() );
 
             // Example 1: Set multiple values at once

@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import it.xeniaprogetti.rfi.plugin.example.clients.ApiClient;
 import org.opennms.integration.api.v1.alarms.AlarmLifecycleListener;
+import org.opennms.integration.api.v1.dao.InterfaceToNodeCache;
 import org.opennms.integration.api.v1.events.EventForwarder;
 import org.opennms.integration.api.v1.model.Alarm;
 import org.opennms.integration.api.v1.model.immutables.ImmutableEventParameter;
@@ -29,10 +30,12 @@ public class AlarmForwarder implements AlarmLifecycleListener {
 
     private final ApiClient apiClient;
     private final EventForwarder eventForwarder;
+    private final InterfaceToNodeCache interfaceToNodeCache;
 
-    public AlarmForwarder(ApiClient apiClient, EventForwarder eventForwarder) {
+    public AlarmForwarder(ApiClient apiClient, EventForwarder eventForwarder, InterfaceToNodeCache interfaceToNodeCache) {
         this.apiClient = Objects.requireNonNull(apiClient);
         this.eventForwarder = Objects.requireNonNull(eventForwarder);
+        this.interfaceToNodeCache = interfaceToNodeCache;
     }
 
     @Override

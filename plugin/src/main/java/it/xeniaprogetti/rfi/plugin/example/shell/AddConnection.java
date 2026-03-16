@@ -30,6 +30,9 @@ public class AddConnection implements Action {
             required = false)
     public int version = SnmpConstants.version2c;
 
+    @Argument(index = 4, name = "domain", description = "Domain of the snmp connection ", required = true)
+    public String domain = null;
+
     @Override
     public Object execute() throws Exception {
 
@@ -38,11 +41,11 @@ public class AddConnection implements Action {
             return null;
         }
 
-        final var connection = this.connectionManager.newConnection(address, community, version, alias);
+        final var connection = this.connectionManager.newConnection(address, community, version, alias, domain);
 
         connection.save();
 
-        System.out.println("Connection info saved for alias: " + alias);
+        System.out.println("Connection info saved for domain: " + domain + " and alias: " + alias);
 
         return null;
     }

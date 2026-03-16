@@ -1,5 +1,7 @@
 package it.xeniaprogetti.rfi.plugin.example.provisioning.netact;
 
+import it.xeniaprogetti.rfi.plugin.example.connection.Connection;
+import it.xeniaprogetti.rfi.plugin.example.connection.ConnectionManager;
 import org.opennms.integration.api.v1.config.requisition.RequisitionNode;
 import org.opennms.integration.api.v1.config.requisition.immutables.ImmutableRequisition;
 import org.opennms.integration.api.v1.config.requisition.immutables.ImmutableRequisitionMetaData;
@@ -9,8 +11,6 @@ import org.opennms.integration.api.v1.events.EventListener;
 import org.opennms.integration.api.v1.events.EventSubscriptionService;
 import org.opennms.integration.api.v1.model.EventParameter;
 import org.opennms.integration.api.v1.model.InMemoryEvent;
-import org.opennms.integration.api.v1.model.IpInterface;
-import org.opennms.integration.api.v1.model.Node;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
@@ -18,10 +18,9 @@ import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.InetAddress;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
 
 @Component(name = "netActEventManager",
         immediate = true)
@@ -42,6 +41,8 @@ public class NetActEventManager implements EventListener {
 
     private EventSubscriptionService eventSubscriptionService;
     private NodeDao nodeDao;
+    private ConnectionManager connectionManager;
+
 
     public NetActEventManager(){}
 
@@ -53,6 +54,8 @@ public class NetActEventManager implements EventListener {
     public void setNodeDao(NodeDao nodeDao) {
         this.nodeDao = nodeDao;
     }
+    @Reference
+    public void setConnectionManager(ConnectionManager connectionManager){ this.connectionManager = connectionManager;}
 
     @Activate
     public void activate(){
@@ -72,7 +75,7 @@ public class NetActEventManager implements EventListener {
 
     @Override
     public String getName() {
-        return "netAct17EventManager";
+        return "netActEventManager";
     }
 
     @Override
@@ -86,13 +89,26 @@ public class NetActEventManager implements EventListener {
         log.info("Arrived new event filtered to NetActEventManager: {}", e);
 
         String hostAddress = e.getInterface().getHostAddress();
-        Node node = findNodeByIp(hostAddress);
+        /*Node node = findNodeByIp(hostAddress);
         log.info("node By ip: {}", node);
 
         if(node == null){
             log.info("The event comes from an unprovisioned node, it is not processed.");
             return;
+        }*/
+
+        Optional<Connection> optConnection = connectionManager.getConnection(hostAddress);
+        if(optConnection.isEmpty()){
+            log.info("No connection configured for IP {}, event is not processed.", hostAddress);
+            return;
         }
+        Connection connection = optConnection.get();
+        //dominio di appartenenza recuperata dal nodo o dalla connection NA8/NA17/MANTARAY
+        String dominio = connection.getDomain();
+
+        log.info("Found connection for IP {} -> alias={}, domain={}, address={}",
+                hostAddress, connection.getAlias(), dominio, connection.getAddress());
+
 
         String sequenceId = e.getParametersByName(SEQUENCE_ID_NETACT_PARAMETER).stream()
                 .findFirst().map(EventParameter::getValue).orElse(null);
@@ -103,23 +119,21 @@ public class NetActEventManager implements EventListener {
         String optionalInfo = e.getParametersByName(OPT_INFO_NETACT_PARAMETER).stream()
                 .findFirst().map(EventParameter::getValue).orElse(null);
 
-        //dominio di appartenenza recuperata dal nodo o dalla connection NA8/NA17/MANTARAY
-        String dominio = "";
-
         RequisitionNode nodeFromEvent = getNodeFromEvent(dominio, sequenceId, objectInstance, eventTime, optionalInfo);
         if(nodeFromEvent==null){
             log.info("Unable to create RequisitionNode from event.");
             return;
         }
 
-        log.debug("Add {} node in requisition: {}", dominio, nodeFromEvent);
+        log.info("Add {} node in requisition: {}", dominio, nodeFromEvent);
         final var requisition = ImmutableRequisition.newBuilder()
                 .setForeignSource(dominio)
-                .addNode(nodeFromEvent);
+                .addNode(nodeFromEvent)
+                .build();
 
     }
 
-    private Node findNodeByIp(String ip) {
+    /*private Node findNodeByIp(String ip) {
 
         for (Node node : nodeDao.getNodes()) {
             boolean hasIp = node.getIpInterfaces().stream()
@@ -134,7 +148,7 @@ public class NetActEventManager implements EventListener {
             }
         }
         return null;
-    }
+    }*/
 
     private RequisitionNode getNodeFromEvent(String dominio, String sequenceId, String objectInstance, String eventTime, String optionalInfo){
 

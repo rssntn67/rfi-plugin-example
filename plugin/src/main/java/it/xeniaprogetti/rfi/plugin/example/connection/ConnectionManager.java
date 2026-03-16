@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 public class ConnectionManager {
 
     private static final String VERSION_KEY = "version";
+    private static final String DOMAIN_KEY = "domain";
 
     private static final String PREFIX = "rfi_example_connection_";
     private final RuntimeInfo runtimeInfo;
@@ -36,7 +37,12 @@ public class ConnectionManager {
         if (credentials == null) {
             return Optional.empty();
         }
-        ConnectionImpl conn = new ConnectionImpl(fromStore(credentials), alias);
+
+        if (isNullOrEmpty(credentials.getAttribute(DOMAIN_KEY))) {
+            throw new IllegalStateException("Domain is missing");
+        }
+        String domain = credentials.getAttribute(DOMAIN_KEY);
+        ConnectionImpl conn = new ConnectionImpl(fromStore(credentials, alias), alias, domain);
         return Optional.of(conn);
     }
 
@@ -47,14 +53,15 @@ public class ConnectionManager {
      * @param community          the community to authenticate the connection
      * @param version          the version to authenticate the connection
      */
-    public Connection newConnection(final String address, final String community, final int version, final String alias) {
+    public Connection newConnection(final String address, final String community, final int version, final String alias, final String domain) {
         this.ensureCore();
 
         return new ConnectionImpl(SnmpCredentials.builder()
                 .withAddress(address)
                 .withCommunity(community)
                 .withVersion(version)
-                .build(), alias);
+                .withIpAddr(alias)
+                .build(), alias, domain);
     }
 
     /**
@@ -84,7 +91,7 @@ public class ConnectionManager {
                 .collect(Collectors.toSet());
     }
 
-    private static SnmpCredentials fromStore(final Credentials credentials) {
+    private static SnmpCredentials fromStore(final Credentials credentials, final String alias) {
 
         if (isNullOrEmpty(credentials.getUsername())) {
             throw new IllegalStateException("ADDRESS is missing");
@@ -94,14 +101,16 @@ public class ConnectionManager {
             throw new IllegalStateException("COMMUNITY is missing");
         }
 
-        if (isNullOrEmpty(credentials.getAttribute(VERSION_KEY)) && credentials.getAttribute(VERSION_KEY).matches("[0-9]+")) {
+        String versionStr = credentials.getAttribute(VERSION_KEY);
+        if (isNullOrEmpty(versionStr) || !versionStr.matches("[0-9]+")) {
             throw new IllegalStateException("Version is missing");
         }
 
         return SnmpCredentials.builder()
                 .withAddress(credentials.getUsername())
                 .withCommunity(credentials.getPassword())
-                .withVersion(Integer.parseInt(credentials.getAttribute(VERSION_KEY)))
+                .withVersion(Integer.parseInt(versionStr))
+                .withIpAddr(alias) //alias = ip
                 .build();
     }
 
@@ -109,10 +118,12 @@ public class ConnectionManager {
 
         private SnmpCredentials credentials;
         private final String alias;
+        private final String domain;
 
-        private ConnectionImpl(final SnmpCredentials credentials, final String alias) {
+        private ConnectionImpl(final SnmpCredentials credentials, final String alias, final String domain) {
             this.credentials = Objects.requireNonNull(credentials);
             this.alias = alias;
+            this.domain = domain;
         }
 
         @Override
@@ -157,6 +168,10 @@ public class ConnectionManager {
         }
 
         @Override
+        public String getDomain(){ return this.domain;}
+
+
+        @Override
         public void save() {
             ConnectionManager.this.vault.setCredentials(PREFIX + alias, this.asCredentials());
         }
@@ -169,6 +184,7 @@ public class ConnectionManager {
         private Credentials asCredentials() {
             Map<String,String> credentialMap = new HashMap<>();
             credentialMap.put(VERSION_KEY, String.valueOf(this.credentials.version));
+            credentialMap.put(DOMAIN_KEY, this.domain);
 
             return new ImmutableCredentials(this.credentials.address, this.credentials.community, credentialMap);
         }

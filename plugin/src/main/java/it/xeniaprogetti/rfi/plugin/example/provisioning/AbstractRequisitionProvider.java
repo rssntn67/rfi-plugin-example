@@ -1,8 +1,8 @@
 package it.xeniaprogetti.rfi.plugin.example.provisioning;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-//import org.apache.commons.csv.CSVFormat;
-//import org.apache.commons.csv.CSVRecord;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 import org.opennms.integration.api.v1.config.requisition.Requisition;
 import org.opennms.integration.api.v1.config.requisition.RequisitionNode;
 import org.opennms.integration.api.v1.config.requisition.immutables.ImmutableRequisition;
@@ -82,7 +82,7 @@ public abstract class AbstractRequisitionProvider<T> implements RequisitionProvi
         return requisition.build();
     }
 
-    protected String[] parseCsvLineWithQuotes(String line) {
+    /*protected String[] parseCsvLineWithQuotes(String line) {
         List<String> result = new ArrayList<>();
         StringBuilder current = new StringBuilder();
         boolean inQuotes = false;
@@ -105,9 +105,9 @@ public abstract class AbstractRequisitionProvider<T> implements RequisitionProvi
         result.add(current.toString());
 
         return result.toArray(new String[0]);
-    }
+    }*/
 
-    /*protected Iterable<CSVRecord> readCsv(String csvPath) {
+    protected Iterable<CSVRecord> readCsv(String csvPath) {
 
         Path path = Paths.get(csvPath);
 
@@ -136,5 +136,5 @@ public abstract class AbstractRequisitionProvider<T> implements RequisitionProvi
         } catch (IOException e) {
             throw new RuntimeException("Error reading CSV file: " + csvPath, e);
         }
-    }*/
+    }
 }

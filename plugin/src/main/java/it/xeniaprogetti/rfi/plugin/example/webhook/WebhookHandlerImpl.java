@@ -88,7 +88,8 @@ public class WebhookHandlerImpl implements WebhookHandler {
                 connectionDto.getAddress(),
                 connectionDto.getCommunity(),
                 connectionDto.getVersion(),
-                connectionDto.getAlias());
+                connectionDto.getAlias(),
+                connectionDto.getDomain());
 
         connection.save();
 

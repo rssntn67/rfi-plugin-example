@@ -24,6 +24,7 @@ public class SnmpCredentialTest {
                 .withAddress("udp://192.168.1.1/161")
                 .withCommunity("private")
                 .withVersion(SnmpConstants.version2c)
+                .withIpAddr("192.168.1.1")
                 .build();
     }
 }

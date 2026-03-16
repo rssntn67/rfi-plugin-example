@@ -6,6 +6,7 @@ public class ConnectionDto {
     private String address; // udp:<ip>/port
     private String community;
     private  int version;
+    private String domain;
 
     public void setAlias(String alias) {
         this.alias = alias;
@@ -37,5 +38,13 @@ public class ConnectionDto {
 
     public int getVersion() {
         return version;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    public String getDomain() {
+        return domain;
     }
 }

@@ -18,6 +18,7 @@ public class SnmpClient {
                 .withAddress(connection.getAddress())
                 .withCommunity(connection.getCommunity())
                 .withVersion(connection.getVersion())
+                .withIpAddr(connection.getAlias()) //alias = ip
                 .build();
     }
 }

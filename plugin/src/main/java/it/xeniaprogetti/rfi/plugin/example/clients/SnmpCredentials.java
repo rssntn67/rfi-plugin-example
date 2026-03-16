@@ -7,11 +7,13 @@ public class SnmpCredentials {
     public final String address; // udp:<ip>/port
     public final String community;
     public final int version;
+    public final String ipAddr;
 
     private SnmpCredentials(final Builder builder) {
         this.address = builder.address;
         this.community = builder.community;
         this.version = builder.version;
+        this.ipAddr = builder().ipAddr;
     }
     public static Builder builder(){
         return new Builder();
@@ -25,7 +27,8 @@ public class SnmpCredentials {
         return new Builder()
                         .withAddress(snmpCredentials.getAddress())
                         .withCommunity(snmpCredentials.getCommunity())
-                        .withVersion(snmpCredentials.getVersion());
+                        .withVersion(snmpCredentials.getVersion())
+                        .withIpAddr(snmpCredentials.getIpAddr());
 
     }
 
@@ -41,10 +44,15 @@ public class SnmpCredentials {
         return version;
     }
 
+    public String getIpAddr() {
+        return ipAddr;
+    }
+
     public static class Builder {
         private String address; // udp:<ip>/port
         private String community;
         private int version;
+        private String ipAddr;
 
         private Builder(){}
 
@@ -60,6 +68,11 @@ public class SnmpCredentials {
 
         public Builder withVersion(int version){
             this.version = version;
+            return this;
+        }
+
+        public Builder withIpAddr(String ipAddr) {
+            this.ipAddr = ipAddr;
             return this;
         }
 

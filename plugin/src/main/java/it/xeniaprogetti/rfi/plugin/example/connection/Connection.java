@@ -13,6 +13,10 @@ public interface Connection {
     int getVersion();
     void setVersion(int version);
 
+    String getDomain();
+    //void setDomain(String domain);
+
+
     void save();
     void delete();
 }
