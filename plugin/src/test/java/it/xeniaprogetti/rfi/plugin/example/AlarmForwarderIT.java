@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import it.xeniaprogetti.rfi.plugin.example.clients.ApiClient;
 import org.junit.Rule;
 import org.junit.Test;
+import org.opennms.integration.api.v1.dao.InterfaceToNodeCache;
 import org.opennms.integration.api.v1.events.EventForwarder;
 import org.opennms.integration.api.v1.model.Alarm;
 import org.opennms.integration.api.v1.model.Severity;
@@ -32,7 +33,8 @@ public class AlarmForwarderIT {
         // Wire it up
         ApiClient apiClient = new ApiClient(wireMockRule.url("/data/v2/alerts"), "<some-token>");
         EventForwarder eventForwarder = mock(EventForwarder.class);
-        AlarmForwarder alarmForwarder = new AlarmForwarder(apiClient, eventForwarder);
+        InterfaceToNodeCache interfaceToNodeCache = mock(InterfaceToNodeCache.class);
+        AlarmForwarder alarmForwarder = new AlarmForwarder(apiClient, eventForwarder, interfaceToNodeCache);
 
         // Stub the endpoint
         stubFor(post((urlEqualTo("/data/v2/alerts")))
