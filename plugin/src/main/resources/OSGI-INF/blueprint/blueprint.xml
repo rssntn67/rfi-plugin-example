@@ -10,6 +10,9 @@
         <cm:default-properties>
             <cm:property name="url" value="http://127.0.0.1:8888/target" />
             <cm:property name="apiKey" value="TOKEN" />
+            <cm:property name="otrsUrl" value="http://127.0.0.1/otrs/nph-genericinterface.pl/Webservice/GenericTicketConnector" />
+            <cm:property name="otrsUser" value="root@localhost" />
+            <cm:property name="otrsPassword" value="root" />
         </cm:default-properties>
     </cm:property-placeholder>
 
@@ -25,6 +28,17 @@
         <argument value="${url}"/>
         <argument value="${apiKey}"/>
     </bean>
+
+    <bean id="otrs6Client" class="it.xeniaprogetti.rfi.plugin.example.clients.Otrs6Client">
+        <argument value="${otrsUrl}"/>
+        <argument value="${otrsUser}"/>
+        <argument value="${otrsPassword}"/>
+    </bean>
+
+    <bean id="ticketer" class="it.xeniaprogetti.rfi.plugin.example.ticketing.Ticketer">
+        <argument ref="otrs6Client"/>
+    </bean>
+    <service ref="ticketer" interface="org.opennms.integration.api.v1.ticketing.TicketingPlugin"/>
 
     <bean id="connectionManager" class="it.xeniaprogetti.rfi.plugin.example.connection.ConnectionManager">
         <argument>
