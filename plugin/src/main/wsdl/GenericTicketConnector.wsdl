@@ -1971,27 +1971,6 @@
             </xsd:complexType>
         </xsd:schema>
     </wsdl:types>
-    <wsdl:types><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.otrs.org/TicketConnector/">
-    <xsd:element name="TicketUpdate">
-        <xsd:complexType>
-            <xsd:sequence>
-                <xsd:element
-                    name="in"
-                    type="xsd:string">
-                </xsd:element>
-            </xsd:sequence>
-        </xsd:complexType>
-    </xsd:element>
-    <xsd:element name="TicketUpdateResponse">
-        <xsd:complexType>
-            <xsd:sequence>
-                <xsd:element
-                    name="out"
-                    type="xsd:string">
-                </xsd:element>
-            </xsd:sequence>
-        </xsd:complexType>
-    </xsd:element></xsd:schema></wsdl:types>
     <wsdl:message name="TicketCreateRequest">
         <wsdl:part
             name="TicketCreate"
